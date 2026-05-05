@@ -4,855 +4,691 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APSE – Uniformes & Personalizados | Duartina-SP</title>
-<meta name="description" content="APSE Estamparia – Uniformes, camisetas, brindes personalizados. Atendemos toda a região do interior paulista e todo o Brasil pelo WhatsApp.">
+<meta name="description" content="APSE Estamparia – Uniformes, camisetas, brindes personalizados com bordado computadorizado e silk screen. Duartina-SP. Atendemos todo o Brasil.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --amarelo: #F5C800;
-  --laranja: #F07800;
-  --vermelho: #D42020;
-  --preto: #080808;
-  --branco: #FFFFFF;
-  --cinza-escuro: #111111;
-  --cinza: #1E1E1E;
-  --cinza-medio: #2A2A2A;
-  --texto: #222222;
+/* ── RESET & VARS ── */
+:root{
+  --y:#F5C500;
+  --o:#F07800;
+  --r:#CC2020;
+  --k:#080808;
+  --k1:#111111;
+  --k2:#191919;
+  --k3:#222222;
+  --k4:#2E2E2E;
+  --w:#FFFFFF;
+  --muted:rgba(255,255,255,.52);
+  --border:rgba(255,255,255,.07);
+  --font:'Barlow',sans-serif;
+  --cond:'Barlow Condensed',sans-serif;
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;background:var(--preto);color:var(--branco);overflow-x:hidden}
-
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--preto)}
-::-webkit-scrollbar-thumb{background:var(--amarelo);border-radius:3px}
+body{font-family:var(--font);background:var(--k);color:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--k)}
+::-webkit-scrollbar-thumb{background:var(--y);border-radius:2px}
 
 /* ── HEADER ── */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:rgba(8,8,8,.95);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(245,200,0,.2);
-  padding:.55rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:1rem;
-  transition:box-shadow .3s,border-color .3s;
+#hdr{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:70px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:rgba(8,8,8,.9);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(245,197,0,.15);
+  transition:background .3s,box-shadow .3s;
 }
-header.scrolled{
-  border-bottom-color:var(--amarelo);
-  box-shadow:0 4px 30px rgba(245,200,0,.1);
+#hdr.solid{background:var(--k1);box-shadow:0 2px 28px rgba(0,0,0,.7)}
+.hdr-logo img{height:50px;width:auto;object-fit:contain;filter:drop-shadow(0 0 10px rgba(245,197,0,.3));transition:filter .3s}
+.hdr-logo:hover img{filter:drop-shadow(0 0 16px rgba(245,197,0,.55))}
+.hdr-nav{display:flex;align-items:center;gap:0}
+.hdr-nav a{
+  font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);padding:.42rem .8rem;border-radius:5px;
+  transition:color .2s,background .2s;
 }
+.hdr-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.hdr-cta{
+  margin-left:.6rem;background:var(--y);color:var(--k)!important;
+  font-weight:700!important;padding:.44rem 1.1rem!important;border-radius:5px!important;
+  transition:background .2s,transform .15s!important;
+}
+.hdr-cta:hover{background:#FFD700!important;transform:translateY(-1px)!important}
 
-.logo-wrap{display:flex;align-items:center;gap:.7rem;text-decoration:none}
-.logo-img-header{
-  height:52px;width:auto;
-  filter:drop-shadow(0 0 6px rgba(245,200,0,.4));
-  transition:filter .3s;
-}
-.logo-wrap:hover .logo-img-header{filter:drop-shadow(0 0 12px rgba(245,200,0,.7))}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.5rem}
+.burger span{width:22px;height:2px;background:var(--w);border-radius:2px;transition:.28s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-nav{display:flex;align-items:center;gap:.15rem}
-nav a{
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;
-  color:rgba(255,255,255,.75);text-decoration:none;padding:.4rem .7rem;
-  border-radius:6px;letter-spacing:.05em;text-transform:uppercase;
-  transition:background .2s,color .2s;
+.mob-nav{
+  display:none;position:fixed;top:70px;left:0;right:0;
+  background:rgba(8,8,8,.97);border-bottom:1px solid var(--border);
+  z-index:899;flex-direction:column;padding:1rem 1.5rem 1.5rem;gap:.15rem;
 }
-nav a:hover{background:rgba(245,200,0,.1);color:var(--amarelo)}
-.nav-cta{
-  background:linear-gradient(135deg,var(--amarelo),var(--laranja));
-  color:var(--preto)!important;padding:.45rem 1rem!important;
-  border-radius:7px!important;font-weight:900!important;
-  margin-left:.4rem;
-  box-shadow:0 3px 12px rgba(245,200,0,.25);
-  display:inline-flex;align-items:center;gap:.4rem;
+.mob-nav.open{display:flex}
+.mob-nav a{
+  font-size:.92rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);padding:.7rem 1rem;border-radius:6px;
+  border-left:2px solid transparent;transition:all .2s;
 }
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(245,200,0,.45);background:rgba(0,0,0,0)!important}
-
-.hamburger{
-  display:none;flex-direction:column;gap:5px;cursor:pointer;
-  background:none;border:none;padding:.5rem;
-}
-.hamburger span{width:24px;height:2px;background:var(--amarelo);border-radius:2px;transition:.3s}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-.mobile-menu{
-  display:none;position:fixed;top:72px;left:0;right:0;
-  background:rgba(8,8,8,.98);backdrop-filter:blur(18px);
-  z-index:999;border-bottom:1px solid rgba(245,200,0,.2);
-  flex-direction:column;padding:.8rem 1.2rem;gap:.2rem;
-}
-.mobile-menu.open{display:flex}
-.mobile-menu a{
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;
-  color:rgba(255,255,255,.8);text-decoration:none;padding:.7rem 1rem;
-  border-radius:8px;text-transform:uppercase;letter-spacing:.05em;
-  border-left:3px solid transparent;
-  transition:all .2s;
-}
-.mobile-menu a:hover{border-left-color:var(--amarelo);color:var(--amarelo);background:rgba(245,200,0,.07)}
+.mob-nav a:hover{color:#fff;border-left-color:var(--y);padding-left:1.3rem}
 
 /* ── HERO ── */
 #hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  background:var(--preto);
-  padding-top:72px;
+  min-height:100vh;display:flex;align-items:center;
+  padding:70px 3rem 0;
+  position:relative;overflow:hidden;background:var(--k);
 }
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 70% 60% at 75% 50%,rgba(240,120,0,.14) 0%,transparent 70%),
-    radial-gradient(ellipse 50% 70% at 15% 85%,rgba(212,32,32,.10) 0%,transparent 60%),
-    radial-gradient(ellipse 45% 45% at 50% 5%,rgba(245,200,0,.08) 0%,transparent 60%);
+    radial-gradient(ellipse 65% 65% at 68% 52%,rgba(240,120,0,.1) 0%,transparent 68%),
+    radial-gradient(ellipse 50% 60% at 18% 72%,rgba(204,32,32,.07) 0%,transparent 62%),
+    radial-gradient(ellipse 40% 40% at 48% 4%,rgba(245,197,0,.06) 0%,transparent 55%);
 }
-/* Diagonal brush accent */
-.hero-accent{
-  position:absolute;right:-8%;top:50%;transform:translateY(-50%) rotate(-12deg);
-  width:45%;height:120%;
-  background:linear-gradient(135deg,rgba(245,200,0,.03) 0%,rgba(240,120,0,.06) 50%,rgba(212,32,32,.03) 100%);
-  border-radius:40px;pointer-events:none;z-index:0;
+.hero-wrap{
+  max-width:1240px;width:100%;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  padding:4rem 0;
 }
-
-.hero-content{
-  position:relative;z-index:1;
-  max-width:1200px;width:100%;margin:0 auto;
-  padding:4rem 2rem;
-  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+.h-eyebrow{
+  display:inline-block;
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--y);border-bottom:1px solid rgba(245,197,0,.3);
+  padding-bottom:.3rem;margin-bottom:1.3rem;
+  opacity:0;animation:up .6s .05s ease forwards;
 }
-
-.hero-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(245,200,0,.1);border:1px solid rgba(245,200,0,.25);
-  border-radius:50px;padding:.35rem 1rem;margin-bottom:1.5rem;
-  font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amarelo);
-  animation:fadeUp .7s ease both;
+.h-title{
+  font-family:var(--cond);font-weight:900;
+  font-size:clamp(3rem,6.2vw,5.4rem);
+  line-height:.95;text-transform:uppercase;letter-spacing:-.01em;
+  opacity:0;animation:up .6s .1s ease forwards;
 }
-.hero-badge-dot{width:7px;height:7px;background:var(--amarelo);border-radius:50%;animation:pulse 1.8s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
-
-.hero-h1{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  font-size:clamp(3.2rem,7vw,5.8rem);
-  line-height:.95;letter-spacing:-.01em;
-  animation:fadeUp .7s .1s ease both;
-  text-transform:uppercase;
-}
-.hero-h1 em{
-  font-style:normal;
-  background:linear-gradient(90deg,var(--amarelo),var(--laranja),var(--vermelho));
+.h-title .grad{
+  background:linear-gradient(90deg,var(--y),var(--o));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hero-sub{
-  margin-top:1.3rem;font-size:1rem;font-weight:600;color:rgba(255,255,255,.65);
-  line-height:1.7;max-width:480px;
-  animation:fadeUp .7s .2s ease both;
+.h-desc{
+  margin-top:1.3rem;font-size:1rem;font-weight:400;
+  line-height:1.78;color:var(--muted);max-width:470px;
+  opacity:0;animation:up .6s .18s ease forwards;
 }
-
-.hero-tags{
+.h-pills{
   display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.5rem;
-  animation:fadeUp .7s .3s ease both;
+  opacity:0;animation:up .6s .25s ease forwards;
 }
-.hero-tag{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:4px;padding:.3rem .8rem;font-size:.72rem;font-weight:800;
-  color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;
+.h-pill{
+  font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12);
+  border-radius:3px;padding:.28rem .75rem;
 }
-
-.hero-btns{
-  display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;
-  animation:fadeUp .7s .4s ease both;
+.h-btns{
+  display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.9rem;
+  opacity:0;animation:up .6s .32s ease forwards;
 }
-.btn-hero-primary{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:linear-gradient(135deg,var(--amarelo),var(--laranja));
-  color:var(--preto);font-weight:900;font-size:.95rem;
-  padding:.85rem 2rem;border-radius:10px;text-decoration:none;
-  box-shadow:0 6px 25px rgba(245,200,0,.3);
-  transition:transform .2s,box-shadow .2s;
-  letter-spacing:.02em;text-transform:uppercase;
+.btn-y{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--y);color:var(--k);font-weight:700;font-size:.9rem;
+  padding:.78rem 1.9rem;border-radius:5px;border:none;
+  box-shadow:0 4px 20px rgba(245,197,0,.26);
+  transition:background .2s,transform .15s,box-shadow .2s;
 }
-.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(245,200,0,.5)}
-.btn-hero-secondary{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:transparent;color:var(--branco);font-weight:700;font-size:.95rem;
-  padding:.85rem 2rem;border-radius:10px;text-decoration:none;
-  border:2px solid rgba(255,255,255,.15);
-  transition:all .2s;text-transform:uppercase;letter-spacing:.02em;
+.btn-y:hover{background:#FFD700;transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,197,0,.4)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--w);font-weight:600;font-size:.9rem;
+  padding:.78rem 1.9rem;border-radius:5px;
+  border:1px solid rgba(255,255,255,.18);
+  transition:border-color .2s,color .2s;
 }
-.btn-hero-secondary:hover{border-color:var(--amarelo);color:var(--amarelo)}
-
+.btn-ghost:hover{border-color:var(--y);color:var(--y)}
 .hero-right{
-  display:flex;flex-direction:column;gap:1.2rem;
-  animation:fadeIn 1s .4s ease both;
-  align-items:center;
+  display:flex;flex-direction:column;align-items:center;gap:1.8rem;
+  opacity:0;animation:fadeIn 1s .3s ease forwards;
 }
-.hero-logo-big{
-  width:100%;max-width:400px;
-  filter:drop-shadow(0 0 50px rgba(245,200,0,.25));
+.hero-logo{
+  width:100%;max-width:420px;
+  filter:drop-shadow(0 0 50px rgba(245,197,0,.2));
   animation:float 5s ease-in-out infinite;
 }
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-.hero-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;width:100%;max-width:400px;
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.hero-nums{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  width:100%;background:var(--border);
+  border:1px solid var(--border);border-radius:8px;overflow:hidden;
 }
-.stat-card{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
-  border-radius:10px;padding:.9rem .6rem;text-align:center;
+.hero-num{
+  background:var(--k2);padding:1.1rem .7rem;text-align:center;
 }
-.stat-card:hover{border-color:rgba(245,200,0,.3)}
-.stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--amarelo);line-height:1}
-.stat-label{font-size:.65rem;font-weight:800;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-num strong{
+  display:block;font-family:var(--cond);font-size:2rem;font-weight:800;
+  color:var(--y);line-height:1;
+}
+.hero-num span{
+  display:block;font-size:.68rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-top:.35rem;
+}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ── SECTION BASE ── */
-section{padding:6rem 1.5rem}
-.section-inner{max-width:1200px;margin:0 auto}
-.section-label{
-  font-size:.7rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--amarelo);margin-bottom:.5rem;
-  display:flex;align-items:center;gap:.6rem;
+/* ── STRIPE ── */
+.stripe{height:3px;background:linear-gradient(90deg,var(--r),var(--o),var(--y))}
+
+/* ── SECTION ── */
+.sec{padding:6rem 3rem}
+.sec-inner{max-width:1240px;margin:0 auto}
+.lbl{
+  display:block;font-size:.68rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--y);margin-bottom:.55rem;
 }
-.section-label::before{content:'';display:block;width:20px;height:2px;background:var(--amarelo)}
-.section-title{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  font-size:clamp(2.2rem,5vw,3.6rem);
-  line-height:1;letter-spacing:-.01em;text-transform:uppercase;
+.ttl{
+  font-family:var(--cond);font-weight:900;text-transform:uppercase;
+  font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.02;letter-spacing:-.01em;
 }
-.section-title em{
-  font-style:normal;
-  background:linear-gradient(90deg,var(--amarelo),var(--laranja));
+.ttl .grad{
+  background:linear-gradient(90deg,var(--y),var(--o));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.section-sub{color:rgba(255,255,255,.55);font-size:.95rem;font-weight:600;max-width:560px;line-height:1.7;margin-top:.8rem}
+.dsc{color:var(--muted);font-size:.97rem;line-height:1.78;max-width:540px;margin-top:.85rem}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
 
 /* ── SOBRE ── */
-#sobre{background:var(--cinza-escuro)}
+#sobre{background:var(--k2)}
 .sobre-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4.5rem;align-items:center;margin-top:3.5rem;
 }
-.sobre-img-wrap{
-  position:relative;border-radius:16px;overflow:hidden;
+.sobre-visual{position:relative}
+.sobre-frame{
+  background:var(--k);border:1px solid rgba(245,197,0,.12);
+  border-radius:12px;padding:3rem 2.5rem;
+  display:flex;align-items:center;justify-content:center;
   box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
-.sobre-img-wrap img{width:100%;height:auto;display:block}
-.sobre-badge-overlay{
-  position:absolute;bottom:1.5rem;left:1.5rem;
-  background:linear-gradient(135deg,var(--amarelo),var(--laranja));
-  color:var(--preto);padding:.6rem 1.2rem;border-radius:8px;
-  font-weight:900;font-size:.82rem;letter-spacing:.03em;text-transform:uppercase;
-}
-.sobre-text{color:rgba(255,255,255,.7);font-size:.95rem;line-height:1.8;margin-bottom:1.2rem}
-.sobre-items{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
-.sobre-item{
-  display:flex;align-items:flex-start;gap:.9rem;
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
-  border-left:3px solid var(--amarelo);border-radius:0 10px 10px 0;
-  padding:.85rem 1rem;
-}
-.sobre-item-icon{
-  width:36px;height:36px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.sobre-item-icon svg{width:18px;height:18px;fill:var(--amarelo)}
-.sobre-item-text strong{display:block;font-size:.85rem;font-weight:900;color:var(--amarelo);margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.04em}
-.sobre-item-text span{font-size:.82rem;color:rgba(255,255,255,.55)}
-
-/* ── CATÁLOGO ── */
-#catalogo{background:var(--preto);position:relative;overflow:hidden}
-#catalogo::before{
-  content:'';position:absolute;top:-100px;right:-100px;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(245,200,0,.05),transparent 70%);
-  pointer-events:none;
-}
-.catalogo-tabs{display:flex;flex-wrap:wrap;gap:.45rem;margin:2.5rem 0}
-.tab-btn{
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
-  color:rgba(255,255,255,.6);font-family:'Nunito',sans-serif;font-weight:800;
-  font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;
-  padding:.45rem 1rem;border-radius:6px;cursor:pointer;
-  transition:all .2s;
-}
-.tab-btn:hover,.tab-btn.active{
-  background:linear-gradient(135deg,var(--amarelo),var(--laranja));
-  border-color:transparent;color:var(--preto);
-}
-.catalogo-panel{display:none}
-.catalogo-panel.active{display:block}
-.produtos-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:1.1rem;
-  margin-top:1rem;
-}
-.produto-card{
-  background:var(--cinza);border-radius:14px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.06);
-  transition:transform .25s,box-shadow .25s,border-color .25s;
-  cursor:pointer;
-}
-.produto-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 14px 40px rgba(245,200,0,.18);
-  border-color:rgba(245,200,0,.4);
-}
-.produto-img{
-  width:100%;aspect-ratio:1;overflow:hidden;
-  background:var(--cinza-medio);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-}
-.produto-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.produto-card:hover .produto-img img{transform:scale(1.06)}
-.produto-img-label{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:.4rem .7rem;
-  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
-  font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);
-}
-.produto-info{padding:.9rem}
-.produto-nome{font-weight:900;font-size:.88rem;color:var(--branco);margin-bottom:.25rem;text-transform:uppercase;letter-spacing:.03em}
-.produto-desc{font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.5}
-.produto-cta{
-  display:inline-flex;align-items:center;gap:.4rem;
-  margin-top:.7rem;font-size:.72rem;font-weight:900;
-  color:var(--amarelo);text-decoration:none;
+.sobre-frame img{width:100%;max-width:320px;filter:drop-shadow(0 0 28px rgba(245,197,0,.22))}
+.sobre-tag{
+  position:absolute;bottom:-1.1rem;right:-1.1rem;
+  background:var(--y);color:var(--k);
+  font-family:var(--cond);font-size:.88rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;
-  transition:gap .2s;
+  padding:.65rem 1.2rem;border-radius:5px;
+  box-shadow:0 6px 20px rgba(245,197,0,.28);
 }
-.produto-cta:hover{gap:.7rem}
+.sobre-p{font-size:.97rem;color:rgba(255,255,255,.7);line-height:1.82;margin-top:1.1rem}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.9rem}
+.feat{
+  display:flex;align-items:flex-start;gap:.7rem;
+  background:var(--k3);border:1px solid var(--border);
+  border-left:2px solid var(--y);
+  border-radius:0 7px 7px 0;padding:.8rem .95rem;
+}
+.feat svg{width:16px;height:16px;fill:var(--y);flex-shrink:0;margin-top:.18rem}
+.feat strong{display:block;font-size:.82rem;font-weight:700;color:#fff}
+.feat span{font-size:.76rem;color:var(--muted);line-height:1.5}
+
+/* ── CATALOGO ── */
+#catalogo{background:var(--k)}
+.tabs{
+  display:flex;flex-wrap:wrap;gap:0;
+  border-bottom:1px solid var(--border);margin:2.4rem 0 1.8rem;
+}
+.tb{
+  font-size:.77rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);background:none;border:none;
+  padding:.62rem 1rem;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:color .18s,border-color .18s;
+}
+.tb:hover{color:#fff}
+.tb.on{color:var(--y);border-bottom-color:var(--y)}
+
+.tp{display:none}.tp.on{display:block}
+
+.pgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1.1rem;
+}
+.pc{
+  background:var(--k2);border:1px solid var(--border);
+  border-radius:9px;overflow:hidden;cursor:pointer;
+  transition:transform .22s,border-color .22s,box-shadow .22s;
+}
+.pc:hover{transform:translateY(-5px);border-color:rgba(245,197,0,.3);box-shadow:0 14px 36px rgba(0,0,0,.4)}
+.pc-img{
+  width:100%;aspect-ratio:4/3;overflow:hidden;
+  background:var(--k3);position:relative;
+}
+/* Overlay badge on product images */
+.pc-img::after{
+  content:'Sua arte aqui';
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(245,197,0,.88);
+  color:var(--k);font-family:var(--cond);font-size:.78rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  text-align:center;padding:.32rem;
+  transform:translateY(100%);transition:transform .22s;
+}
+.pc:hover .pc-img::after{transform:none}
+.pc-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .38s}
+.pc:hover .pc-img img{transform:scale(1.04)}
+.pc-body{padding:.9rem 1rem 1.1rem}
+.pc-name{
+  font-family:var(--cond);font-size:1.08rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;color:#fff;
+}
+.pc-desc{font-size:.79rem;color:var(--muted);line-height:1.55;margin-top:.3rem}
+.pc-cta{
+  display:inline-flex;align-items:center;gap:.35rem;
+  margin-top:.8rem;font-size:.75rem;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--y);
+  transition:gap .18s;
+}
+.pc-cta svg{width:11px;height:11px;fill:var(--y);transition:transform .18s}
+.pc:hover .pc-cta{gap:.55rem}
+.pc:hover .pc-cta svg{transform:translateX(3px)}
 
 /* ── PERSONALIZAÇÃO ── */
-#personalizacao{background:var(--cinza-escuro)}
-.pers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem;margin-top:3rem}
-.pers-card{
-  background:var(--cinza);border-radius:18px;padding:2rem;
-  border:1px solid rgba(255,255,255,.06);
-  position:relative;overflow:hidden;
-  transition:transform .25s,box-shadow .25s;
+#personalizacao{background:var(--k2)}
+.per-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1.4rem;margin-top:3rem;
 }
-.pers-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--amarelo),var(--laranja),var(--vermelho));
+.per-card{
+  background:var(--k3);border:1px solid var(--border);
+  border-radius:9px;overflow:hidden;
+  display:grid;grid-template-columns:260px 1fr;
+  transition:border-color .22s;
 }
-.pers-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
-.pers-icon-wrap{
-  width:52px;height:52px;border-radius:12px;
-  background:rgba(245,200,0,.1);border:1px solid rgba(245,200,0,.2);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1.2rem;
+.per-card:hover{border-color:rgba(245,197,0,.25)}
+.per-img{
+  width:260px;overflow:hidden;background:var(--k4);flex-shrink:0;
 }
-.pers-icon-wrap svg{width:24px;height:24px;fill:var(--amarelo)}
-.pers-img{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1.2rem}
-.pers-nome{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:.03em;color:var(--amarelo);margin-bottom:.6rem;text-transform:uppercase}
-.pers-text{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.7}
+.per-img img{width:100%;height:100%;object-fit:cover;transition:transform .38s}
+.per-card:hover .per-img img{transform:scale(1.05)}
+.per-body{padding:1.7rem}
+.per-num{
+  display:block;font-size:.68rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--y);margin-bottom:.55rem;
+}
+.per-name{
+  font-family:var(--cond);font-size:1.6rem;font-weight:800;
+  text-transform:uppercase;color:#fff;line-height:1;
+}
+.per-text{font-size:.86rem;color:var(--muted);line-height:1.72;margin-top:.75rem}
 
 /* ── GALERIA ── */
-#galeria{background:var(--preto)}
-.galeria-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
-.galeria-grid{
+#galeria{background:var(--k)}
+/* Real photos from APSE */
+.gal-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  grid-template-rows:auto auto;
-  gap:.8rem;
+  grid-template-rows:220px 220px;
+  gap:.9rem;margin-top:2.8rem;
 }
-.galeria-item{
-  border-radius:12px;overflow:hidden;position:relative;
-  background:var(--cinza);
-  aspect-ratio:1;
+.gal-item{
+  border-radius:8px;overflow:hidden;position:relative;
+  background:var(--k3);cursor:pointer;
 }
-.galeria-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-.galeria-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.galeria-item:hover img{transform:scale(1.06)}
-.galeria-item .overlay{
+.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .38s}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-ov{
   position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.75),transparent 60%);
-  opacity:0;transition:opacity .3s;
+  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);
+  opacity:0;transition:opacity .28s;
   display:flex;align-items:flex-end;padding:.9rem;
 }
-.galeria-item:hover .overlay{opacity:1}
-.galeria-item .overlay span{font-size:.78rem;font-weight:800;color:var(--branco);text-transform:uppercase;letter-spacing:.05em}
-
-/* Em breve galeria */
-.galeria-coming{
-  grid-column:1/-1;
-  background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.1);
-  border-radius:14px;padding:3rem;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:1rem;
+.gal-item:hover .gal-ov{opacity:1}
+.gal-ov span{font-size:.77rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase}
+.gal-note{
+  text-align:center;padding:3.5rem 1rem;
+  border:1px solid var(--border);border-radius:9px;background:var(--k2);
+  margin-top:1.5rem;
 }
-.galeria-coming-icon{
-  width:60px;height:60px;border-radius:50%;
-  background:rgba(245,200,0,.08);border:1px solid rgba(245,200,0,.2);
-  display:flex;align-items:center;justify-content:center;
-}
-.galeria-coming-icon svg{width:26px;height:26px;fill:var(--amarelo)}
-.galeria-coming h3{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:.05em;color:var(--amarelo);text-transform:uppercase}
-.galeria-coming p{font-size:.88rem;color:rgba(255,255,255,.45);max-width:360px;line-height:1.6}
+.gal-note p{font-size:.93rem;color:var(--muted);line-height:1.75;max-width:440px;margin:1rem auto 0}
+.gal-note a{color:var(--y);font-weight:600}
 
 /* ── INSTAGRAM ── */
-#instagram{background:var(--cinza-escuro)}
-.insta-header{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;margin-bottom:2rem;
+#instagram{background:var(--k2)}
+.insta-card{
+  border:1px solid var(--border);border-radius:11px;
+  overflow:hidden;background:var(--k3);margin-top:2.5rem;
 }
-.insta-follow-btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-  color:var(--branco);font-weight:900;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;
-  padding:.65rem 1.6rem;border-radius:8px;text-decoration:none;
-  transition:transform .2s,box-shadow .2s;
+.insta-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 1.6rem;border-bottom:1px solid var(--border);
+  background:var(--k2);
 }
-.insta-follow-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(220,39,67,.4)}
-.insta-follow-btn svg{width:16px;height:16px;fill:#fff}
-
-/* Widget container do Instagram */
-.insta-widget-container{
-  background:var(--cinza);border-radius:16px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.06);
-  min-height:400px;
-  display:flex;flex-direction:column;
+.insta-prof{display:flex;align-items:center;gap:.95rem}
+.insta-av{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  padding:2px;
+  background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
 }
-.insta-profile-bar{
-  display:flex;align-items:center;gap:1rem;
-  padding:1.2rem 1.5rem;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.insta-profile-avatar{
-  width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,#f09433,#bc1888);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  font-weight:900;font-size:1.1rem;color:#fff;
-  font-family:'Barlow Condensed',sans-serif;
-}
-.insta-profile-info{flex:1}
-.insta-profile-handle{font-weight:900;font-size:.95rem;color:var(--branco)}
-.insta-profile-name{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:.15rem}
-.insta-profile-stats{display:flex;gap:1.5rem;font-size:.78rem}
-.insta-profile-stat span:first-child{font-weight:900;color:var(--branco)}
-.insta-profile-stat span:last-child{color:rgba(255,255,255,.45);margin-left:.2rem}
-.insta-ig-icon svg{width:26px;height:26px;fill:rgba(255,255,255,.4)}
-
-.insta-posts-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
-  flex:1;
-}
-.insta-post-item{
-  aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer;
-  background:var(--cinza-medio);
-}
-.insta-post-item img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
-.insta-post-item:hover img{transform:scale(1.05)}
-.insta-post-overlay{
-  position:absolute;inset:0;background:rgba(0,0,0,.5);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .3s;
-}
-.insta-post-item:hover .insta-post-overlay{opacity:1}
-.insta-play-icon{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(255,255,255,.15);backdrop-filter:blur(4px);
+.insta-av-in{
+  width:100%;height:100%;border-radius:50%;
+  background:var(--k3);overflow:hidden;
   display:flex;align-items:center;justify-content:center;
 }
-.insta-play-icon svg{width:16px;height:16px;fill:#fff;margin-left:2px}
-
-.insta-view-more{
-  padding:1rem 1.5rem;
-  display:flex;align-items:center;justify-content:center;
-  border-top:1px solid rgba(255,255,255,.06);
+.insta-av-in img{width:100%;height:100%;object-fit:cover}
+.insta-handle{font-weight:700;font-size:.92rem;color:#fff}
+.insta-sub{font-size:.76rem;color:var(--muted);margin-top:.08rem}
+.insta-follow{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color:#fff;font-weight:700;font-size:.8rem;
+  padding:.46rem 1.1rem;border-radius:5px;
+  transition:opacity .2s,transform .15s;
 }
-.insta-view-more a{
-  font-size:.8rem;font-weight:800;color:rgba(255,255,255,.5);
-  text-decoration:none;letter-spacing:.06em;text-transform:uppercase;
-  transition:color .2s;
+.insta-follow:hover{opacity:.9;transform:translateY(-1px)}
+.insta-feed{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;background:rgba(255,255,255,.04);
 }
-.insta-view-more a:hover{color:var(--amarelo)}
+.insta-post{
+  aspect-ratio:1;background:var(--k3);
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.insta-post img{width:100%;height:100%;object-fit:cover;transition:transform .36s}
+.insta-post:hover img{transform:scale(1.06)}
+.insta-post-ov{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.52);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;
+  opacity:0;transition:opacity .28s;
+}
+.insta-post:hover .insta-post-ov{opacity:1}
+.insta-post-ov svg{width:20px;height:20px;fill:#fff}
+.insta-post-ov span{font-size:.76rem;font-weight:700;color:#fff}
+.insta-sk{
+  background:linear-gradient(90deg,var(--k3) 25%,var(--k4) 50%,var(--k3) 75%);
+  background-size:400% 100%;animation:sk 1.4s infinite;
+}
+@keyframes sk{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.insta-ftr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.6rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:.5rem;
+}
+.insta-ftr span{font-size:.75rem;color:var(--muted)}
+.insta-ftr a{font-size:.75rem;font-weight:700;color:var(--y);letter-spacing:.05em;text-transform:uppercase}
+.insta-ftr a:hover{text-decoration:underline}
 
 /* ── CONTATO ── */
-#contato{background:var(--preto);position:relative;overflow:hidden}
-#contato::after{
-  content:'';position:absolute;bottom:-200px;left:-200px;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(212,32,32,.05),transparent 70%);
-  pointer-events:none;
+#contato{background:var(--k)}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3rem;align-items:start}
+.ct-cards{display:flex;flex-direction:column;gap:.6rem}
+.ct-card{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--k2);border:1px solid var(--border);
+  border-radius:7px;padding:1rem 1.2rem;
+  transition:border-color .2s,transform .2s;
 }
-.contato-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
-  margin-top:3rem;align-items:start;
-}
-.contato-cards{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
-.contato-card{
-  display:flex;align-items:center;gap:1.1rem;
-  background:var(--cinza);border:1px solid rgba(255,255,255,.06);
-  border-radius:12px;padding:1.1rem 1.3rem;
-  text-decoration:none;
-  transition:transform .2s,border-color .2s,box-shadow .2s;
-}
-.contato-card:hover{
-  transform:translateX(5px);
-  border-color:var(--amarelo);
-  box-shadow:0 6px 20px rgba(245,200,0,.12);
-}
-.contato-card-icon{
-  width:44px;height:44px;
-  border-radius:10px;display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.contato-card-icon svg{width:20px;height:20px}
-.cc-whats{background:rgba(37,211,102,.12)}
-.cc-whats svg{fill:#25d366}
-.cc-email{background:rgba(245,200,0,.1)}
-.cc-email svg{fill:var(--amarelo)}
-.cc-insta{background:rgba(220,39,67,.1)}
-.cc-insta svg{fill:#e6683c}
-.cc-face{background:rgba(66,103,178,.1)}
-.cc-face svg{fill:#4267b2}
-.cc-local{background:rgba(240,120,0,.1)}
-.cc-local svg{fill:var(--laranja)}
-.contato-card-text strong{display:block;font-size:.75rem;font-weight:900;color:var(--amarelo);text-transform:uppercase;letter-spacing:.07em}
-.contato-card-text span{font-size:.88rem;color:rgba(255,255,255,.75);font-weight:600}
+.ct-card:hover{border-color:rgba(245,197,0,.28);transform:translateX(4px)}
+.ct-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.d-g{background:#25d366}.d-y{background:var(--y)}.d-p{background:#e1306c}.d-b{background:#1877f2}.d-o{background:var(--o)}
+.ct-card strong{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ct-card span{font-size:.9rem;font-weight:600;color:#fff}
 
-.horario-card{
-  background:var(--cinza);border-radius:14px;padding:1.6rem;
-  border:1px solid rgba(255,255,255,.06);
-  margin-top:1.2rem;
+.horario{
+  background:var(--k2);border:1px solid var(--border);
+  border-radius:7px;padding:1.4rem;margin-top:.9rem;
 }
-.horario-card h3{
-  font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:1.4rem;color:var(--amarelo);margin-bottom:1rem;
-  letter-spacing:.05em;text-transform:uppercase;
+.horario h3{
+  font-family:var(--cond);font-size:1.2rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:.95rem;
 }
-.horario-line{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);
-  font-size:.85rem;font-weight:600;
+.hl{
+  display:flex;justify-content:space-between;
+  font-size:.86rem;padding:.5rem 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
 }
-.horario-line:last-child{border-bottom:none}
-.horario-day{color:rgba(255,255,255,.6)}
-.horario-time{color:var(--amarelo);font-weight:900}
-.horario-time.fechado{color:var(--vermelho)}
+.hl:last-child{border-bottom:none}
+.hl-day{color:var(--muted);font-weight:400}
+.hl-time{font-weight:700;color:#fff}
+.hl-time.closed{color:var(--r)}
 
-.form-title{
-  font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:1.9rem;color:var(--branco);letter-spacing:.03em;
-  margin-bottom:.5rem;text-transform:uppercase;
+.ct-form{
+  background:var(--k2);border:1px solid var(--border);
+  border-radius:9px;padding:2rem;
 }
-.form-sub{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
-.contact-form{display:flex;flex-direction:column;gap:.9rem}
-.form-group{display:flex;flex-direction:column;gap:.35rem}
-.form-group label{font-size:.72rem;font-weight:900;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
-.form-group input,
-.form-group textarea,
-.form-group select{
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-  border-radius:9px;padding:.75rem 1rem;
-  color:var(--branco);font-family:'Nunito',sans-serif;font-size:.9rem;
-  transition:border-color .2s,background .2s;
-  outline:none;
+.ct-form h3{
+  font-family:var(--cond);font-size:1.75rem;font-weight:800;
+  text-transform:uppercase;line-height:1;margin-bottom:.35rem;
 }
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{border-color:var(--amarelo);background:rgba(245,200,0,.04)}
-.form-group textarea{resize:vertical;min-height:110px}
-.form-group select option{background:var(--cinza);color:var(--branco)}
+.ct-form h3 .grad{
+  background:linear-gradient(90deg,var(--y),var(--o));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.ct-form p{font-size:.86rem;color:var(--muted);margin-bottom:1.4rem}
+.ffields{display:flex;flex-direction:column;gap:.85rem}
+.fg{display:flex;flex-direction:column;gap:.35rem}
+.fg label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fg input,.fg textarea,.fg select{
+  background:var(--k3);border:1px solid var(--border);
+  border-radius:6px;padding:.7rem .95rem;
+  color:#fff;font-family:var(--font);font-size:.9rem;
+  outline:none;transition:border-color .2s;-webkit-appearance:none;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--y)}
+.fg select option{background:var(--k3)}
+.fg textarea{resize:vertical;min-height:100px}
 .btn-form{
-  background:linear-gradient(135deg,var(--amarelo),var(--laranja));
-  color:var(--preto);font-weight:900;font-size:.9rem;
-  padding:.9rem;border-radius:10px;border:none;
-  cursor:pointer;font-family:'Nunito',sans-serif;
-  transition:transform .2s,box-shadow .2s;
-  letter-spacing:.04em;text-transform:uppercase;
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  width:100%;background:var(--y);color:var(--k);
+  font-family:var(--font);font-weight:700;font-size:.92rem;
+  letter-spacing:.04em;padding:.82rem;border-radius:6px;border:none;
+  margin-top:.3rem;transition:background .2s,transform .15s;
 }
-.btn-form:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,200,0,.4)}
+.btn-form:hover{background:#FFD700;transform:translateY(-1px)}
 
-/* ── WHATSAPP FLOAT ── */
-.wa-float{
-  position:fixed;bottom:2rem;right:2rem;z-index:900;
-  width:58px;height:58px;border-radius:50%;
-  background:linear-gradient(135deg,#25d366,#128c7e);
+/* ── WA FLOAT ── */
+.wa{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:800;
+  width:56px;height:56px;border-radius:50%;
+  background:#25d366;
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 25px rgba(37,211,102,.4);
-  animation:waPulse 2.5s ease-in-out infinite;
-  text-decoration:none;
-  transition:transform .2s;
+  box-shadow:0 4px 18px rgba(37,211,102,.38);
+  transition:transform .2s,box-shadow .2s;
 }
-.wa-float:hover{transform:scale(1.1)}
-@keyframes waPulse{0%,100%{box-shadow:0 6px 25px rgba(37,211,102,.4)}50%{box-shadow:0 6px 40px rgba(37,211,102,.65),0 0 0 10px rgba(37,211,102,.08)}}
-.wa-float svg{width:30px;height:30px;fill:#fff}
-.wa-tooltip{
-  position:absolute;right:68px;top:50%;transform:translateY(-50%);
-  background:var(--cinza);color:var(--branco);
-  font-size:.75rem;font-weight:800;white-space:nowrap;
-  padding:.4rem .8rem;border-radius:7px;
-  opacity:0;pointer-events:none;transition:opacity .2s;
-  border:1px solid rgba(255,255,255,.08);
-  text-transform:uppercase;letter-spacing:.05em;
+.wa:hover{transform:scale(1.08);box-shadow:0 6px 26px rgba(37,211,102,.55)}
+.wa svg{width:26px;height:26px;fill:#fff}
+.wa-ring{
+  position:absolute;width:56px;height:56px;border-radius:50%;
+  background:rgba(37,211,102,.28);
+  animation:ring 2.2s ease-out infinite;
 }
-.wa-float:hover .wa-tooltip{opacity:1}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}
 
 /* ── FOOTER ── */
-footer{
-  background:var(--cinza-escuro);
-  border-top:1px solid rgba(255,255,255,.06);
-  padding:4rem 1.5rem 2rem;
+footer{background:var(--k2);border-top:1px solid var(--border)}
+.ft-top{
+  max-width:1240px;margin:0 auto;
+  display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;
+  gap:2.8rem;padding:3.5rem 3rem 2.5rem;
 }
-.footer-inner{max-width:1200px;margin:0 auto}
-
-/* Logo grande no footer */
-.footer-logo-section{
-  text-align:center;
-  padding-bottom:3.5rem;
-  margin-bottom:3.5rem;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.footer-logo-big{
-  max-width:380px;width:90%;
-  filter:drop-shadow(0 0 30px rgba(245,200,0,.2));
-  margin:0 auto;display:block;
-}
-.footer-logo-tagline{
-  font-size:.8rem;font-weight:700;color:rgba(255,255,255,.35);
-  letter-spacing:.15em;text-transform:uppercase;margin-top:1rem;
-}
-
-.footer-grid{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;
-  margin-bottom:3rem;
-}
-.footer-brand .logo-img-footer{
-  height:52px;
-  filter:drop-shadow(0 0 6px rgba(245,200,0,.3));
-  margin-bottom:1rem;
-}
-.footer-brand p{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:250px}
-.footer-socials{display:flex;gap:.5rem;margin-top:1.2rem}
-.footer-social{
-  width:36px;height:36px;border-radius:8px;
+.ft-brand img{height:56px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(245,197,0,.22));margin-bottom:1rem}
+.ft-brand p{font-size:.83rem;color:var(--muted);line-height:1.75;max-width:245px}
+.ft-socials{display:flex;gap:.5rem;margin-top:1.1rem}
+.ft-soc{
+  width:34px;height:34px;border-radius:5px;
   display:flex;align-items:center;justify-content:center;
-  text-decoration:none;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
-  transition:all .2s;
+  border:1px solid var(--border);background:var(--k3);
+  transition:background .2s,border-color .2s,transform .15s;
 }
-.footer-social svg{width:16px;height:16px;fill:rgba(255,255,255,.5);transition:fill .2s}
-.footer-social:hover{transform:translateY(-2px);background:var(--amarelo);border-color:var(--amarelo)}
-.footer-social:hover svg{fill:var(--preto)}
-.footer-col h4{
-  font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--amarelo);margin-bottom:1rem;
+.ft-soc:hover{background:var(--y);border-color:var(--y);transform:translateY(-2px)}
+.ft-soc svg{width:15px;height:15px;fill:rgba(255,255,255,.65);transition:fill .2s}
+.ft-soc:hover svg{fill:var(--k)}
+.ft-col h4{
+  font-size:.68rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--y);margin-bottom:1rem;
 }
-.footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:.5rem}
-.footer-col ul li a{
-  font-size:.82rem;color:rgba(255,255,255,.45);text-decoration:none;
-  transition:color .2s;font-weight:600;
-}
-.footer-col ul li a:hover{color:var(--amarelo)}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.05);
-  padding-top:1.5rem;
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:.45rem}
+.ft-col a{font-size:.84rem;color:var(--muted);transition:color .2s}
+.ft-col a:hover{color:#fff}
+.ft-bot{
+  max-width:1240px;margin:0 auto;
   display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
+  flex-wrap:wrap;gap:.5rem;
+  padding:1.1rem 3rem;border-top:1px solid var(--border);
 }
-.footer-copy{font-size:.75rem;color:rgba(255,255,255,.25)}
-.footer-dev{font-size:.75rem;color:rgba(255,255,255,.25)}
-.footer-dev a{color:rgba(245,200,0,.6);text-decoration:none;font-weight:700}
-.footer-dev a:hover{color:var(--amarelo)}
-
-/* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* ── LIGHTBOX ── */
-.lightbox{
-  display:none;position:fixed;inset:0;z-index:3000;
-  background:rgba(0,0,0,.92);backdrop-filter:blur(10px);
-  align-items:center;justify-content:center;
-}
-.lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain}
-.lightbox-close{
-  position:absolute;top:1.5rem;right:1.5rem;
-  background:rgba(255,255,255,.1);border:none;cursor:pointer;
-  color:var(--branco);font-size:1.3rem;
-  width:40px;height:40px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  transition:.2s;font-family:monospace;
-}
-.lightbox-close:hover{background:var(--vermelho)}
+.ft-bot p{font-size:.76rem;color:rgba(255,255,255,.28)}
+.ft-bot a{color:rgba(245,197,0,.65);font-weight:600;transition:color .2s}
+.ft-bot a:hover{color:var(--y)}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{display:none}
-  .hamburger{display:flex}
-  .hero-content{grid-template-columns:1fr;gap:2rem}
-  .hero-right{order:-1}
-  .hero-logo-big{max-width:260px}
-  .hero-stats{grid-template-columns:repeat(3,1fr)}
-  .sobre-grid{grid-template-columns:1fr}
-  .sobre-img-wrap{max-width:400px}
-  .contato-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .galeria-grid{grid-template-columns:repeat(2,1fr)}
-  .galeria-item:first-child{grid-column:span 2;grid-row:span 1}
-  .insta-posts-grid{grid-template-columns:repeat(3,1fr)}
-  .footer-logo-big{max-width:280px}
+@media(max-width:1020px){
+  .per-card{grid-template-columns:200px 1fr}
+  .per-img{width:200px}
 }
-@media(max-width:600px){
-  section{padding:4rem 1rem}
-  .hero-stats{grid-template-columns:repeat(3,1fr);gap:.4rem}
-  .stat-num{font-size:1.6rem}
-  .hero-btns{flex-direction:column}
-  .btn-hero-primary,.btn-hero-secondary{justify-content:center}
-  .footer-grid{grid-template-columns:1fr}
-  .contato-card{padding:.9rem 1rem}
-  .footer-logo-big{max-width:220px}
-  .galeria-grid{grid-template-columns:1fr 1fr}
+@media(max-width:880px){
+  .hdr-nav{display:none}
+  .burger{display:flex}
+  #hdr{padding:0 1.5rem}
+  #hero{padding:70px 1.5rem 0}
+  .hero-wrap{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 0}
+  .hero-right{order:-1}
+  .hero-logo{max-width:290px}
+  .sobre-grid{grid-template-columns:1fr}
+  .sobre-visual{max-width:380px}
+  .per-grid{grid-template-columns:1fr}
+  .per-card{grid-template-columns:1fr}
+  .per-img{width:100%;height:210px}
+  .ct-grid{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gal-item:nth-child(1){grid-column:span 2;grid-row:span 1}
+  .sec{padding:4.5rem 1.5rem}
+}
+@media(max-width:580px){
+  .h-title{font-size:2.7rem}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .hero-nums{grid-template-columns:repeat(3,1fr)}
+  .hero-num strong{font-size:1.55rem}
+  .ft-top{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .ft-bot{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:400px){
+  .pgrid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header id="mainHeader">
-  <a href="#hero" class="logo-wrap">
-    <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE Uniformes e Personalizados" class="logo-img-header" onerror="this.style.display='none'">
+<header id="hdr">
+  <a href="#hero" class="hdr-logo">
+    <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE Uniformes e Personalizados">
   </a>
-  <nav>
+  <nav class="hdr-nav">
     <a href="#sobre">Sobre</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#personalizacao">Personalização</a>
     <a href="#galeria">Galeria</a>
     <a href="#instagram">Instagram</a>
     <a href="#contato">Contato</a>
-    <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações%20sobre%20os%20serviços." target="_blank" class="nav-cta">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
+    <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações." target="_blank" class="hdr-cta">Solicitar Orçamento</a>
   </nav>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="burger" id="burger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#sobre" onclick="closeMobile()">Sobre</a>
-  <a href="#catalogo" onclick="closeMobile()">Catálogo</a>
-  <a href="#personalizacao" onclick="closeMobile()">Personalização</a>
-  <a href="#galeria" onclick="closeMobile()">Galeria</a>
-  <a href="#instagram" onclick="closeMobile()">Instagram</a>
-  <a href="#contato" onclick="closeMobile()">Contato</a>
-  <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações." target="_blank" style="color:#25d366;border-left-color:#25d366">WhatsApp</a>
-</div>
+<nav class="mob-nav" id="mobNav">
+  <a href="#sobre" onclick="closeMob()">Sobre</a>
+  <a href="#catalogo" onclick="closeMob()">Catálogo</a>
+  <a href="#personalizacao" onclick="closeMob()">Personalização</a>
+  <a href="#galeria" onclick="closeMob()">Galeria</a>
+  <a href="#instagram" onclick="closeMob()">Instagram</a>
+  <a href="#contato" onclick="closeMob()">Contato</a>
+  <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações." target="_blank" style="color:#25d366">Solicitar Orçamento via WhatsApp</a>
+</nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-accent"></div>
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-badge">
-        <div class="hero-badge-dot"></div>
-        Duartina-SP — Atendemos todo o Brasil
+  <div class="hero-glow"></div>
+  <div class="hero-wrap">
+    <div>
+      <span class="h-eyebrow">Duartina-SP — Atendemos todo o Brasil</span>
+      <h1 class="h-title">
+        Uniformes &amp;<br>
+        <span class="grad">Personalizados</span><br>
+        com Qualidade
+      </h1>
+      <p class="h-desc">Camisetas, uniformes, brindes e muito mais — com bordado computadorizado e silk screen que fazem a diferença para sua empresa, escola ou evento.</p>
+      <div class="h-pills">
+        <span class="h-pill">Uniformes</span>
+        <span class="h-pill">Canecas</span>
+        <span class="h-pill">Hospitalar</span>
+        <span class="h-pill">Escolar</span>
+        <span class="h-pill">Industrial</span>
+        <span class="h-pill">Brindes</span>
       </div>
-      <h1 class="hero-h1">Uniformes &amp;<br><em>Personalizados</em><br>de Qualidade</h1>
-      <p class="hero-sub">Camisetas, uniformes, brindes e muito mais — com bordado computadorizado e silk screen que fazem a diferença.</p>
-      <div class="hero-tags">
-        <span class="hero-tag">Uniformes</span>
-        <span class="hero-tag">Canecas</span>
-        <span class="hero-tag">Hospitalar</span>
-        <span class="hero-tag">Escolar</span>
-        <span class="hero-tag">Industrial</span>
-        <span class="hero-tag">Brindes</span>
-      </div>
-      <div class="hero-btns">
-        <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="btn-hero-primary">Solicitar Orçamento</a>
-        <a href="#catalogo" class="btn-hero-secondary">Ver Catálogo</a>
+      <div class="h-btns">
+        <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="btn-y">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Solicitar Orçamento
+        </a>
+        <a href="#catalogo" class="btn-ghost">Ver Catálogo</a>
       </div>
     </div>
     <div class="hero-right">
-      <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE Uniformes e Personalizados" class="hero-logo-big" onerror="this.style.display='none'">
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-num">+10</div>
-          <div class="stat-label">Anos no mercado</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">+500</div>
-          <div class="stat-label">Clientes atendidos</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Satisfação garantida</div>
-        </div>
+      <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE" class="hero-logo">
+      <div class="hero-nums">
+        <div class="hero-num"><strong>+10</strong><span>Anos de mercado</span></div>
+        <div class="hero-num"><strong>+500</strong><span>Clientes</span></div>
+        <div class="hero-num"><strong>100%</strong><span>Dedicação</span></div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="stripe"></div>
 
 <!-- SOBRE -->
-<section id="sobre">
-  <div class="section-inner">
-    <div class="sobre-grid reveal">
-      <div class="sobre-img-wrap">
-        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80" alt="Atelier APSE Estamparia" loading="lazy">
-        <div class="sobre-badge-overlay">Fundada em Duartina-SP</div>
+<section id="sobre" class="sec">
+  <div class="sec-inner">
+    <div class="sobre-grid">
+      <div class="sobre-visual rv">
+        <div class="sobre-frame">
+          <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE Uniformes e Personalizados">
+        </div>
+        <div class="sobre-tag">Duartina-SP — Interior Paulista</div>
       </div>
-      <div class="sobre-info">
-        <p class="section-label">Sobre a empresa</p>
-        <h2 class="section-title">Quem somos: <em>APSE</em></h2>
-        <p class="sobre-text" style="margin-top:1rem">
-          A <strong style="color:#fff">APSE</strong> é uma empresa especializada em estamparia, personalização e confecção de uniformes, sediada em <strong style="color:#fff">Duartina-SP</strong>. Administrada por <strong style="color:#fff">Ricardo</strong>, nasceu da paixão por transformar tecidos simples em peças únicas que identificam pessoas, equipes e empresas.
-        </p>
-        <p class="sobre-text">
-          Atendemos toda a <strong style="color:#fff">região do interior paulista</strong> e, para compras online via WhatsApp, atendemos <strong style="color:#fff">todo o Brasil</strong> com envio via Correios / SEDEX. Em breve também no Mercado Livre, Shopee e outros marketplaces.
-        </p>
-        <div class="sobre-items">
-          <div class="sobre-item">
-            <div class="sobre-item-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
-            <div class="sobre-item-text">
-              <strong>Localização</strong>
-              <span>Duartina-SP — atendemos toda a região</span>
-            </div>
+      <div class="rv d1">
+        <span class="lbl">Sobre a empresa</span>
+        <h2 class="ttl">Quem somos:<br><span class="grad">APSE</span></h2>
+        <p class="sobre-p">A APSE é uma empresa especializada em estamparia, personalização e confecção de uniformes, sediada em <strong style="color:#fff">Duartina-SP</strong> e administrada por <strong style="color:#fff">Ricardo</strong>. Nasceu da paixão por transformar tecidos comuns em peças únicas que identificam empresas, equipes e eventos.</p>
+        <p class="sobre-p">Atendemos toda a <strong style="color:#fff">região do interior paulista</strong> em nossa loja física, onde você pode conhecer o mostruário completo. Para compras online, atendemos <strong style="color:#fff">todo o Brasil</strong> via WhatsApp com envio pelos Correios e SEDEX. Em breve estaremos no Mercado Livre, Shopee e demais marketplaces.</p>
+        <div class="features">
+          <div class="feat">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <div><strong>Loja Física</strong><span>Duartina-SP — mostruário completo</span></div>
           </div>
-          <div class="sobre-item">
-            <div class="sobre-item-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-            </div>
-            <div class="sobre-item-text">
-              <strong>Envio para todo o Brasil</strong>
-              <span>Via WhatsApp + envio pelos Correios / SEDEX</span>
-            </div>
+          <div class="feat">
+            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            <div><strong>Envio Nacional</strong><span>WhatsApp + Correios / SEDEX</span></div>
           </div>
-          <div class="sobre-item">
-            <div class="sobre-item-icon">
-              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            </div>
-            <div class="sobre-item-text">
-              <strong>Loja Física com Mostruário</strong>
-              <span>Venha nos visitar e ver todas as opções disponíveis</span>
-            </div>
+          <div class="feat">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+            <div><strong>Gerido por Ricardo</strong><span>Atendimento próximo e eficiente</span></div>
           </div>
-          <div class="sobre-item">
-            <div class="sobre-item-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 4H4v2l8 5 8-5V4zm0 4.236l-8 5-8-5V20h16V8.236z"/></svg>
-            </div>
-            <div class="sobre-item-text">
-              <strong>Em breve nos Marketplaces</strong>
-              <span>Mercado Livre, Shopee e outros</span>
-            </div>
+          <div class="feat">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <div><strong>Qualidade Garantida</strong><span>Materiais selecionados, resultados precisos</span></div>
           </div>
         </div>
       </div>
@@ -860,399 +696,458 @@ footer{
   </div>
 </section>
 
+<div class="stripe"></div>
+
 <!-- CATÁLOGO -->
-<section id="catalogo">
-  <div class="section-inner">
-    <p class="section-label reveal">Nossos Produtos</p>
-    <h2 class="section-title reveal">Catálogo <em>Completo</em></h2>
-    <p class="section-sub reveal">Confira nossas categorias. Clique em qualquer produto para solicitar orçamento via WhatsApp.</p>
-    <div class="catalogo-tabs reveal">
-      <button class="tab-btn active" data-tab="todos">Todos</button>
-      <button class="tab-btn" data-tab="camisetas">Camisetas</button>
-      <button class="tab-btn" data-tab="uniformes">Uniformes</button>
-      <button class="tab-btn" data-tab="escolar">Escolar</button>
-      <button class="tab-btn" data-tab="brindes">Brindes &amp; Canecas</button>
-      <button class="tab-btn" data-tab="agasalhos">Agasalhos</button>
+<section id="catalogo" class="sec">
+  <div class="sec-inner">
+    <span class="lbl rv">Nossos Produtos</span>
+    <h2 class="ttl rv">Catálogo <span class="grad">Completo</span></h2>
+    <p class="dsc rv">Clique em qualquer produto para solicitar um orçamento diretamente pelo WhatsApp.</p>
+
+    <div class="tabs rv">
+      <button class="tb on" data-tab="todos">Todos</button>
+      <button class="tb" data-tab="camisetas">Camisetas</button>
+      <button class="tb" data-tab="uniformes">Uniformes</button>
+      <button class="tb" data-tab="escolar">Escolar</button>
+      <button class="tb" data-tab="brindes">Brindes</button>
+      <button class="tb" data-tab="agasalhos">Agasalhos</button>
     </div>
 
     <!-- TODOS -->
-    <div class="catalogo-panel active" id="tab-todos">
-      <div class="produtos-grid">
-        <div class="produto-card" onclick="waMsg('Camiseta Gola V e Careca personalizada')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="Camiseta" loading="lazy">
-            <div class="produto-img-label">Sua estampa aqui</div>
+    <div class="tp on" id="tab-todos">
+      <div class="pgrid">
+
+        <div class="pc" onclick="waOrc('Camiseta Gola Careca Personalizada')">
+          <div class="pc-img">
+            <img src="https://images.tcdn.com.br/img/img_prod/650482/camiseta_branca_gola_careca_personalizada_163_2_5a85aebc0893b5892a2de8266b23f12a.jpg"
+              alt="Camiseta Gola Careca"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Gola+Careca'">
           </div>
-          <div class="produto-info">
-            <p class="produto-nome">Camisetas Gola V e Careca</p>
-            <p class="produto-desc">Com estampa ou bordado. Diversas cores e tamanhos.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
-          </div>
-        </div>
-        <div class="produto-card" onclick="waMsg('Camisa Polo personalizada')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&q=80" alt="Camisa Polo" loading="lazy">
-            <div class="produto-img-label">Sua logo aqui</div>
-          </div>
-          <div class="produto-info">
-            <p class="produto-nome">Camisas Polo</p>
-            <p class="produto-desc">Piquet, malha fria — ideais para uniformes profissionais.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
+          <div class="pc-body">
+            <p class="pc-name">Camiseta Gola Careca</p>
+            <p class="pc-desc">Clássica, confortável, em diversas cores. Com estampa ou bordado personalizado.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
           </div>
         </div>
-        <div class="produto-card" onclick="waMsg('Jaleco com estampa ou bordado')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80" alt="Jaleco" loading="lazy">
-            <div class="produto-img-label">Sua logo aqui</div>
+
+        <div class="pc" onclick="waOrc('Camiseta Gola V Personalizada')">
+          <div class="pc-img">
+            <img src="https://www.freepik.com/free-photo/blank-white-v-neck-t-shirt-front-view_5045427.htm#fromView=search&page=1&position=0&uuid=mock"
+              alt="Camiseta Gola V"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Gola+V'">
           </div>
-          <div class="produto-info">
-            <p class="produto-nome">Jalecos</p>
-            <p class="produto-desc">Estampados ou bordados. Perfeitos para área de saúde.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
-          </div>
-        </div>
-        <div class="produto-card" onclick="waMsg('Caneca personalizada com silk screen')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500&q=80" alt="Caneca" loading="lazy">
-            <div class="produto-img-label">Sua logo aqui</div>
-          </div>
-          <div class="produto-info">
-            <p class="produto-nome">Canecas Personalizadas</p>
-            <p class="produto-desc">Louça, térmicas, copos — ótimas para brindes.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
+          <div class="pc-body">
+            <p class="pc-name">Camiseta Gola V</p>
+            <p class="pc-desc">Estilo moderno e versátil. Disponível com estampa ou bordado em diversas cores.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
           </div>
         </div>
-        <div class="produto-card" onclick="waMsg('Uniforme hospitalar personalizado')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Uniforme Hospitalar" loading="lazy">
-            <div class="produto-img-label">Sua logo aqui</div>
+
+        <div class="pc" onclick="waOrc('Camisa Polo Personalizada')">
+          <div class="pc-img">
+            <img src="https://images.tcdn.com.br/img/img_prod/1079059/camisa_polo_masculina_branca_personalizada_bordado_frente_verso_manga_curta_2_1_20221014131845.jpg"
+              alt="Camisa Polo"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Polo'">
           </div>
-          <div class="produto-info">
-            <p class="produto-nome">Uniformes Hospitalares</p>
-            <p class="produto-desc">Scrubs, jalecos e peças para área da saúde.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
-          </div>
-        </div>
-        <div class="produto-card" onclick="waMsg('Balde de cerveja personalizado')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=500&q=80" alt="Balde de Cerveja" loading="lazy">
-            <div class="produto-img-label">Sua logo aqui</div>
-          </div>
-          <div class="produto-info">
-            <p class="produto-nome">Baldes de Cerveja</p>
-            <p class="produto-desc">Personalizados com silk. Ótimos para festas e bares.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
+          <div class="pc-body">
+            <p class="pc-name">Camisa Polo</p>
+            <p class="pc-desc">Piquet ou malha fria — referência em uniformes profissionais de alto padrão.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
           </div>
         </div>
-        <div class="produto-card" onclick="waMsg('Agasalho personalizado')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Agasalho" loading="lazy">
-            <div class="produto-img-label">Sua estampa aqui</div>
+
+        <div class="pc" onclick="waOrc('Jaleco Personalizado com bordado')">
+          <div class="pc-img">
+            <img src="https://cdn.awsli.com.br/2500x2500/878/878875/produto/191474116/jaleco-branco-feminino-oxford-manga-longa-com-bordado-personalizado-nome-e-crc-lqgpswb6nc.jpg"
+              alt="Jaleco Personalizado"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Jaleco'">
           </div>
-          <div class="produto-info">
-            <p class="produto-nome">Agasalhos</p>
-            <p class="produto-desc">Escolares e profissionais, com estampa ou bordado.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
-          </div>
-        </div>
-        <div class="produto-card" onclick="waMsg('Camisa social manga longa ou curta')">
-          <div class="produto-img">
-            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&q=80" alt="Camisa Social" loading="lazy">
-            <div class="produto-img-label">Sua logo aqui</div>
-          </div>
-          <div class="produto-info">
-            <p class="produto-nome">Camisas Sociais</p>
-            <p class="produto-desc">Manga longa ou curta. Ideais para uniformes corporativos.</p>
-            <a class="produto-cta">Orçar no WhatsApp</a>
+          <div class="pc-body">
+            <p class="pc-name">Jalecos</p>
+            <p class="pc-desc">Em manequim ou pessoa — com bordado do nome, CRM, CRO e logo da empresa.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
           </div>
         </div>
+
+        <div class="pc" onclick="waOrc('Caneca Personalizada')">
+          <div class="pc-img">
+            <img src="https://1777954759540_image.png"
+              alt="Canecas Personalizadas"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Canecas'">
+          </div>
+          <div class="pc-body">
+            <p class="pc-name">Canecas Personalizadas</p>
+            <p class="pc-desc">Louça, térmicas e copos personalizados com silk screen — ideais para brindes.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
+          </div>
+        </div>
+
+        <div class="pc" onclick="waOrc('Uniforme Hospitalar/Scrub Personalizado')">
+          <div class="pc-img">
+            <img src="https://jajecosconforto.com.br/wp-content/uploads/2022/10/Scrub-Azul-Feminino-600x600.jpg"
+              alt="Uniforme Hospitalar"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Hospitalar'">
+          </div>
+          <div class="pc-body">
+            <p class="pc-name">Uniformes Hospitalares</p>
+            <p class="pc-desc">Scrubs, jalecos e conjuntos para profissionais da saúde com bordado personalizado.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
+          </div>
+        </div>
+
+        <div class="pc" onclick="waOrc('Balde de Cerveja e Copo Personalizado')">
+          <div class="pc-img">
+            <img src="1777954752830_image.png"
+              alt="Balde e Copo Personalizados"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Balde'">
+          </div>
+          <div class="pc-body">
+            <p class="pc-name">Baldes e Copos</p>
+            <p class="pc-desc">Personalizados com silk screen para festas, bares e confraternizações.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
+          </div>
+        </div>
+
+        <div class="pc" onclick="waOrc('Brindes e Lembrancinhas Personalizadas — cadernos, cadernetas e itens personalizados')">
+          <div class="pc-img">
+            <img src="1777954755678_image.png"
+              alt="Brindes e Lembranças"
+              onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Brindes'">
+          </div>
+          <div class="pc-body">
+            <p class="pc-name">Brindes e Lembranças</p>
+            <p class="pc-desc">Cadernos, cadernetas, garrafinhas e itens personalizados para eventos e empresas.</p>
+            <span class="pc-cta">Solicitar orçamento <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- CAMISETAS -->
-    <div class="catalogo-panel" id="tab-camisetas">
-      <div class="produtos-grid">
-        <div class="produto-card" onclick="waMsg('Camiseta Gola Careca personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=500&q=80" alt="Gola Careca" loading="lazy"><div class="produto-img-label">Sua estampa aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Gola Careca</p><p class="produto-desc">Clássica, confortável, com estampa ou bordado.</p><a class="produto-cta">Orçar</a></div>
+    <div class="tp" id="tab-camisetas">
+      <div class="pgrid">
+        <div class="pc" onclick="waOrc('Camiseta Gola Careca Personalizada')">
+          <div class="pc-img"><img src="https://images.tcdn.com.br/img/img_prod/650482/camiseta_branca_gola_careca_personalizada_163_2_5a85aebc0893b5892a2de8266b23f12a.jpg" alt="Gola Careca" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Gola+Careca'"></div>
+          <div class="pc-body"><p class="pc-name">Gola Careca</p><p class="pc-desc">Clássica e confortável, com estampa ou bordado.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Camiseta Gola V personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="Gola V" loading="lazy"><div class="produto-img-label">Sua estampa aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Gola V</p><p class="produto-desc">Estilo e personalidade com sua marca.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Camiseta Gola V Personalizada')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Gola+V" alt="Gola V"></div>
+          <div class="pc-body"><p class="pc-name">Gola V</p><p class="pc-desc">Estilo e versatilidade com sua estampa ou bordado.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Camisa Polo Piquet personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&q=80" alt="Polo Piquet" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Polo Piquet</p><p class="produto-desc">Tecido premium para uniformes corporativos.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Camisa Polo Piquet Personalizada')">
+          <div class="pc-img"><img src="https://images.tcdn.com.br/img/img_prod/1079059/camisa_polo_masculina_branca_personalizada_bordado_frente_verso_manga_curta_2_1_20221014131845.jpg" alt="Polo Piquet" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Polo+Piquet'"></div>
+          <div class="pc-body"><p class="pc-name">Polo Piquet</p><p class="pc-desc">Tecido premium para uniformes profissionais.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Camisa Polo Malha Fria personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=500&q=80" alt="Polo Malha Fria" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Polo Malha Fria</p><p class="produto-desc">Leve e fresco para o dia a dia profissional.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Camisa Polo Malha Fria Personalizada')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Polo+Malha+Fria" alt="Polo Malha Fria"></div>
+          <div class="pc-body"><p class="pc-name">Polo Malha Fria</p><p class="pc-desc">Leve e fresco para o dia a dia corporativo.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Camisa Social Manga Longa personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&q=80" alt="Social Manga Longa" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Social Manga Longa</p><p class="produto-desc">Elegância e profissionalismo em cada detalhe.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Camisa Social Manga Longa Personalizada')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Social+Manga+Longa" alt="Social Manga Longa"></div>
+          <div class="pc-body"><p class="pc-name">Social Manga Longa</p><p class="pc-desc">Elegância e profissionalismo para o ambiente corporativo.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Camisa Social Manga Curta personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500&q=80" alt="Social Manga Curta" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Social Manga Curta</p><p class="produto-desc">Conforto e praticidade para o ambiente corporativo.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Camisa Social Manga Curta Personalizada')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Social+Manga+Curta" alt="Social Manga Curta"></div>
+          <div class="pc-body"><p class="pc-name">Social Manga Curta</p><p class="pc-desc">Conforto e praticidade para ambientes profissionais.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
       </div>
     </div>
 
     <!-- UNIFORMES -->
-    <div class="catalogo-panel" id="tab-uniformes">
-      <div class="produtos-grid">
-        <div class="produto-card" onclick="waMsg('Uniforme social personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" alt="Uniforme Social" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Uniformes Sociais</p><p class="produto-desc">Identidade visual profissional para sua empresa.</p><a class="produto-cta">Orçar</a></div>
+    <div class="tp" id="tab-uniformes">
+      <div class="pgrid">
+        <div class="pc" onclick="waOrc('Uniforme Social Personalizado')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Uniforme+Social" alt="Uniforme Social"></div>
+          <div class="pc-body"><p class="pc-name">Uniformes Sociais</p><p class="pc-desc">Identidade visual profissional para sua empresa.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Uniforme industrial personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=500&q=80" alt="Uniforme Industrial" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Uniformes Industriais</p><p class="produto-desc">Resistentes e personalizados para o chão de fábrica.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Uniforme Industrial Personalizado')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Industrial" alt="Industrial"></div>
+          <div class="pc-body"><p class="pc-name">Uniformes Industriais</p><p class="pc-desc">Resistentes e personalizados para o ambiente de trabalho.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Uniforme hospitalar personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Uniforme Hospitalar" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Uniformes Hospitalares</p><p class="produto-desc">Para médicos, enfermeiros e profissionais da saúde.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Uniforme Hospitalar/Scrub Personalizado')">
+          <div class="pc-img"><img src="https://jajecosconforto.com.br/wp-content/uploads/2022/10/Scrub-Azul-Feminino-600x600.jpg" alt="Hospitalar" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Hospitalar'"></div>
+          <div class="pc-body"><p class="pc-name">Uniformes Hospitalares</p><p class="pc-desc">Scrubs e jalecos para profissionais da saúde.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Jaleco personalizado com bordado ou estampa')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80" alt="Jaleco" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Jalecos</p><p class="produto-desc">Estampados ou bordados, com logo da sua empresa.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Jaleco Personalizado com bordado')">
+          <div class="pc-img"><img src="https://cdn.awsli.com.br/2500x2500/878/878875/produto/191474116/jaleco-branco-feminino-oxford-manga-longa-com-bordado-personalizado-nome-e-crc-lqgpswb6nc.jpg" alt="Jaleco" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Jaleco'"></div>
+          <div class="pc-body"><p class="pc-name">Jalecos</p><p class="pc-desc">Com nome, CRM e logo da clínica bordados.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
       </div>
     </div>
 
     <!-- ESCOLAR -->
-    <div class="catalogo-panel" id="tab-escolar">
-      <div class="produtos-grid">
-        <div class="produto-card" onclick="waMsg('Camiseta escolar personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=80" alt="Camiseta Escolar" loading="lazy"><div class="produto-img-label">Logo da escola aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Camisetas Escolares</p><p class="produto-desc">Com o nome e logo da escola, em diversas cores.</p><a class="produto-cta">Orçar</a></div>
+    <div class="tp" id="tab-escolar">
+      <div class="pgrid">
+        <div class="pc" onclick="waOrc('Camiseta Escolar Personalizada')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Camiseta+Escolar" alt="Escolar"></div>
+          <div class="pc-body"><p class="pc-name">Camisetas Escolares</p><p class="pc-desc">Com nome e logo da escola, em diversas cores.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Bermuda escolar personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1624378441864-6eda7a994c76?w=500&q=80" alt="Bermuda Escolar" loading="lazy"><div class="produto-img-label">Logo da escola aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Bermudas e Shorts</p><p class="produto-desc">Conforto e identidade para os alunos.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Bermuda/Short Escolar Personalizado')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Bermuda+Escolar" alt="Bermuda"></div>
+          <div class="pc-body"><p class="pc-name">Bermudas e Shorts</p><p class="pc-desc">Confortáveis e padronizados para os alunos.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Agasalho escolar personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=500&q=80" alt="Agasalho Escolar" loading="lazy"><div class="produto-img-label">Logo da escola aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Agasalhos Escolares</p><p class="produto-desc">Completos com estampa ou bordado da escola.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Calça Escolar Personalizada')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Calca+Escolar" alt="Calça"></div>
+          <div class="pc-body"><p class="pc-name">Calças Escolares</p><p class="pc-desc">Qualidade e durabilidade para o dia a dia escolar.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
+        </div>
+        <div class="pc" onclick="waOrc('Agasalho Escolar Personalizado')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Agasalho+Escolar" alt="Agasalho Escolar"></div>
+          <div class="pc-body"><p class="pc-name">Agasalhos Escolares</p><p class="pc-desc">Completos com estampa ou bordado da escola.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
       </div>
     </div>
 
     <!-- BRINDES -->
-    <div class="catalogo-panel" id="tab-brindes">
-      <div class="produtos-grid">
-        <div class="produto-card" onclick="waMsg('Caneca de louça personalizada com silk screen')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500&q=80" alt="Caneca" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Caneca de Louça</p><p class="produto-desc">Clássica e durável, ótima para presentes e brindes.</p><a class="produto-cta">Orçar</a></div>
+    <div class="tp" id="tab-brindes">
+      <div class="pgrid">
+        <div class="pc" onclick="waOrc('Caneca Personalizada de Louça')">
+          <div class="pc-img"><img src="1777954759540_image.png" alt="Canecas" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Caneca'"></div>
+          <div class="pc-body"><p class="pc-name">Canecas</p><p class="pc-desc">De louça ou térmicas com silk screen para brindes e eventos.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Copo térmico personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80" alt="Copo Térmico" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Copos Térmicos</p><p class="produto-desc">Para manter a temperatura — perfeito como brinde.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Balde e Copo Personalizado para evento')">
+          <div class="pc-img"><img src="1777954752830_image.png" alt="Balde e Copo" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Balde'"></div>
+          <div class="pc-body"><p class="pc-name">Baldes e Copos</p><p class="pc-desc">Personalizados com silk screen para festas e bares.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Taça personalizada')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Taça" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Taças</p><p class="produto-desc">Ideais para casamentos, formaturas e eventos.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Caneca e taça personalizada para casamento ou evento')">
+          <div class="pc-img"><img src="1777954762443_image.png" alt="Caneca Casal" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Brindes+Casal'"></div>
+          <div class="pc-body"><p class="pc-name">Brindes para Casamento</p><p class="pc-desc">Canecas, taças e peças personalizadas para lembranças.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Balde de cerveja personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=500&q=80" alt="Balde de Cerveja" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Baldes de Cerveja</p><p class="produto-desc">Personalizados para festas, bares e confraternizações.</p><a class="produto-cta">Orçar</a></div>
-        </div>
-        <div class="produto-card" onclick="waMsg('Lembrança personalizada para festa ou evento')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80" alt="Brindes" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Lembranças de Festa</p><p class="produto-desc">Aniversários, casamentos e confraternizações.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Cadernetas, cadernos e itens personalizados para brindes')">
+          <div class="pc-img"><img src="1777954755678_image.png" alt="Brindes Diversos" onerror="this.src='https://placehold.co/440x330/1a1a1a/F5C500?text=Brindes'"></div>
+          <div class="pc-body"><p class="pc-name">Brindes Corporativos</p><p class="pc-desc">Cadernos, garrafinhas e itens personalizados para eventos e empresas.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
       </div>
     </div>
 
     <!-- AGASALHOS -->
-    <div class="catalogo-panel" id="tab-agasalhos">
-      <div class="produtos-grid">
-        <div class="produto-card" onclick="waMsg('Agasalho escolar personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=500&q=80" alt="Agasalho Escolar" loading="lazy"><div class="produto-img-label">Logo da escola aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Agasalho Escolar</p><p class="produto-desc">Com as cores e logo da escola.</p><a class="produto-cta">Orçar</a></div>
+    <div class="tp" id="tab-agasalhos">
+      <div class="pgrid">
+        <div class="pc" onclick="waOrc('Agasalho Escolar Personalizado')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Escolar" alt="Agasalho Escolar"></div>
+          <div class="pc-body"><p class="pc-name">Agasalho Escolar</p><p class="pc-desc">Com as cores e logo da escola — confortável e durável.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
-        <div class="produto-card" onclick="waMsg('Agasalho profissional personalizado')">
-          <div class="produto-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Agasalho Profissional" loading="lazy"><div class="produto-img-label">Sua logo aqui</div></div>
-          <div class="produto-info"><p class="produto-nome">Agasalho Profissional</p><p class="produto-desc">Para empresas, equipes e eventos corporativos.</p><a class="produto-cta">Orçar</a></div>
+        <div class="pc" onclick="waOrc('Agasalho Profissional Personalizado')">
+          <div class="pc-img"><img src="https://placehold.co/440x330/1a1a1a/F5C500?text=Profissional" alt="Agasalho Profissional"></div>
+          <div class="pc-body"><p class="pc-name">Agasalho Profissional</p><p class="pc-desc">Para empresas, equipes e eventos corporativos.</p><span class="pc-cta">Solicitar <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg></span></div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
+
+<div class="stripe"></div>
 
 <!-- PERSONALIZAÇÃO -->
-<section id="personalizacao">
-  <div class="section-inner">
-    <p class="section-label reveal">Como fazemos</p>
-    <h2 class="section-title reveal">Tipos de <em>Personalização</em></h2>
-    <p class="section-sub reveal">Utilizamos as melhores técnicas do mercado para garantir qualidade, durabilidade e um resultado impressionante.</p>
-    <div class="pers-grid">
-      <div class="pers-card reveal">
-        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&q=80" alt="Bordado Computadorizado" class="pers-img" loading="lazy">
-        <h3 class="pers-nome">Bordado Computadorizado</h3>
-        <p class="pers-text">O bordado computadorizado é uma técnica onde um software transforma a sua arte em pontos de linha, e uma máquina especializada executa o bordado com extrema precisão diretamente no tecido. O resultado é duradouro, sofisticado e resistente à lavagem — ideal para uniformes, jalecos e camisas polo.</p>
+<section id="personalizacao" class="sec">
+  <div class="sec-inner">
+    <span class="lbl rv">Como fazemos</span>
+    <h2 class="ttl rv">Tipos de <span class="grad">Personalização</span></h2>
+    <p class="dsc rv">Utilizamos as melhores técnicas do mercado para garantir qualidade, durabilidade e resultados que impressionam.</p>
+    <div class="per-grid">
+
+      <div class="per-card rv">
+        <div class="per-img">
+          <img src="https://www.brother.com.br/sites/default/files/2022-08/PR1055X_3.jpg"
+            alt="Máquina de Bordado Computadorizado"
+            onerror="this.src='https://placehold.co/260x240/1e1e1e/F5C500?text=Bordado'">
+        </div>
+        <div class="per-body">
+          <span class="per-num">01 / Técnica</span>
+          <h3 class="per-name">Bordado Computadorizado</h3>
+          <p class="per-text">Um software especializado transforma sua arte em pontos de linha, e uma máquina bordadeira executa o desenho com precisão milimétrica diretamente no tecido. O resultado é sofisticado, duradouro e resistente à lavagem — perfeito para uniformes, jalecos e camisas polo.</p>
+        </div>
       </div>
-      <div class="pers-card reveal">
-        <img src="https://images.unsplash.com/photo-1636487658598-e21da3a5a4a2?w=600&q=80" alt="Silk Screen" class="pers-img" loading="lazy">
-        <h3 class="pers-nome">Silk Screen</h3>
-        <p class="pers-text">O silk screen é uma técnica de impressão onde tinta é aplicada sobre o tecido através de uma tela/molde específico para cada cor. Garante cores vivas, nítidas e de alta durabilidade. Muito utilizado em camisetas, canecas, baldes e outros brindes personalizados.</p>
+
+      <div class="per-card rv d1">
+        <div class="per-img">
+          <img src="https://blog.dimona.com.br/wp-content/uploads/2022/05/silk-screen.jpg"
+            alt="Processo Silk Screen"
+            onerror="this.src='https://placehold.co/260x240/1e1e1e/F5C500?text=Silk+Screen'">
+        </div>
+        <div class="per-body">
+          <span class="per-num">02 / Técnica</span>
+          <h3 class="per-name">Silk Screen</h3>
+          <p class="per-text">A tinta é aplicada no tecido ou objeto através de uma tela com o molde da arte, cor por cor. Garante cores vivas, cobertura perfeita e alta durabilidade. Amplamente utilizado em camisetas, canecas, baldes e demais brindes personalizados.</p>
+        </div>
       </div>
-      <div class="pers-card reveal">
-        <img src="https://images.unsplash.com/photo-1612428703851-1efb1b15d47a?w=600&q=80" alt="Estampa Digital" class="pers-img" loading="lazy">
-        <h3 class="pers-nome">Estampa Digital</h3>
-        <p class="pers-text">Impressão digital de alta resolução diretamente na peça, permitindo designs complexos com múltiplas cores, degradês e fotografias. Ideal para produções menores e artes com muitos detalhes.</p>
+
+      <div class="per-card rv d2">
+        <div class="per-img">
+          <img src="https://blog.dimona.com.br/wp-content/uploads/2022/05/silk-screen.jpg"
+            alt="Estampa Digital"
+            onerror="this.src='https://placehold.co/260x240/1e1e1e/F5C500?text=Estampa+Digital'">
+        </div>
+        <div class="per-body">
+          <span class="per-num">03 / Técnica</span>
+          <h3 class="per-name">Estampa Digital</h3>
+          <p class="per-text">Impressão digital de alta resolução diretamente na peça, permitindo designs complexos com múltiplas cores, degradês e fotografias. Ideal para produções menores e artes com muitos detalhes e variações cromáticas.</p>
+        </div>
       </div>
-      <div class="pers-card reveal">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Sublimação" class="pers-img" loading="lazy">
-        <h3 class="pers-nome">Sublimação</h3>
-        <p class="pers-text">Técnica que transfere a tinta para dentro das fibras do tecido através de calor, resultando em cores vibrantes que não descascam nem desbotam. Perfeita para canecas, camisetas de poliéster e outros itens específicos.</p>
+
+      <div class="per-card rv d3">
+        <div class="per-img">
+          <img src="https://blog.dimona.com.br/wp-content/uploads/2022/05/silk-screen.jpg"
+            alt="Sublimação"
+            onerror="this.src='https://placehold.co/260x240/1e1e1e/F5C500?text=Sublimacao'">
+        </div>
+        <div class="per-body">
+          <span class="per-num">04 / Técnica</span>
+          <h3 class="per-name">Sublimação</h3>
+          <p class="per-text">A tinta penetra nas fibras do tecido através do calor, resultando em cores vibrantes e permanentes que não descascam nem desbotam. Ideal para canecas, itens de poliéster e peças com estampas totais e cheias de cor.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<div class="stripe"></div>
 
 <!-- GALERIA -->
-<section id="galeria">
-  <div class="section-inner">
-    <div class="galeria-header reveal">
-      <div>
-        <p class="section-label">Nossos trabalhos</p>
-        <h2 class="section-title">Galeria de <em>Produções</em></h2>
+<section id="galeria" class="sec">
+  <div class="sec-inner">
+    <span class="lbl rv">Nossos trabalhos</span>
+    <h2 class="ttl rv">Galeria de <span class="grad">Produções</span></h2>
+    <p class="dsc rv">Amostras reais dos nossos produtos. Em breve mais fotos serão adicionadas.</p>
+
+    <div class="gal-grid rv">
+      <div class="gal-item">
+        <img src="1777954759540_image.png" alt="Canecas Personalizadas APSE"
+          onerror="this.style.background='var(--k3)'">
+        <div class="gal-ov"><span>Canecas Personalizadas</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="1777954752830_image.png" alt="Baldes e Copos Personalizados APSE"
+          onerror="this.style.background='var(--k3)'">
+        <div class="gal-ov"><span>Baldes e Copos</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="1777954755678_image.png" alt="Brindes Personalizados APSE"
+          onerror="this.style.background='var(--k3)'">
+        <div class="gal-ov"><span>Brindes e Lembranças</span></div>
+      </div>
+      <div class="gal-item">
+        <img src="1777954762443_image.png" alt="Canecas Casal Personalizadas APSE"
+          onerror="this.style.background='var(--k3)'">
+        <div class="gal-ov"><span>Brindes para Casal</span></div>
+      </div>
+      <div class="gal-item" style="background:var(--k3);display:flex;align-items:center;justify-content:center">
+        <img src="1777954759540_image.png" alt="Produção APSE"
+          style="opacity:.4" onerror="this.style.display='none'">
+        <div class="gal-ov"><span>Mais em breve</span></div>
       </div>
     </div>
-    <div class="galeria-grid reveal" id="galeriaGrid">
-      <div class="galeria-coming">
-        <div class="galeria-coming-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-        </div>
-        <h3>Fotos em breve</h3>
-        <p>Em breve serão adicionadas fotos dos nossos trabalhos e produções. Acompanhe também nosso Instagram para ver as novidades em primeira mão.</p>
-        <a href="https://www.instagram.com/apseestamparia/" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#f09433,#bc1888);color:#fff;font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:7px;text-decoration:none;margin-top:.5rem">Ver no Instagram</a>
-      </div>
+
+    <div class="gal-note rv">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" style="margin:0 auto"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <p>Novas fotos serão adicionadas em breve. Acompanhe também nosso Instagram para ver as produções mais recentes: <a href="https://www.instagram.com/apseestamparia/" target="_blank">@apseestamparia</a></p>
     </div>
   </div>
 </section>
+
+<div class="stripe"></div>
 
 <!-- INSTAGRAM -->
-<section id="instagram">
-  <div class="section-inner">
-    <div class="insta-header reveal">
+<section id="instagram" class="sec">
+  <div class="sec-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem" class="rv">
       <div>
-        <p class="section-label">Redes Sociais</p>
-        <h2 class="section-title">Siga no <em>Instagram</em></h2>
-        <p class="section-sub" style="margin-top:.5rem">Acompanhe os bastidores, eventos e novidades da APSE no Instagram.</p>
+        <span class="lbl">Redes Sociais</span>
+        <h2 class="ttl">Siga no <span class="grad">Instagram</span></h2>
+        <p class="dsc">Acompanhe os bastidores, novidades e produções da APSE diretamente no Instagram.</p>
       </div>
-      <a href="https://www.instagram.com/apseestamparia/" target="_blank" class="insta-follow-btn">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Seguir no Instagram
-      </a>
     </div>
 
-    <!-- Widget estilo Instagram — igual ao print do Valdir Campanari -->
-    <div class="insta-widget-container reveal">
-      <div class="insta-profile-bar">
-        <div class="insta-profile-avatar">AP</div>
-        <div class="insta-profile-info">
-          <div class="insta-profile-handle">apseestamparia</div>
-          <div class="insta-profile-name">APSE | Uniformes &amp; Personalizados</div>
-          <div class="insta-profile-stats" style="margin-top:.4rem">
-            <div class="insta-profile-stat"><span id="instaFollowers">---</span><span>seguidores</span></div>
-            <div class="insta-profile-stat"><span id="instaPostCount">---</span><span>posts</span></div>
+    <div class="insta-card rv">
+      <div class="insta-hdr">
+        <div class="insta-prof">
+          <div class="insta-av">
+            <div class="insta-av-in">
+              <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE">
+            </div>
+          </div>
+          <div>
+            <div class="insta-handle">apseestamparia</div>
+            <div class="insta-sub">APSE — Uniformes &amp; Personalizados</div>
           </div>
         </div>
-        <div class="insta-ig-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
+        <a href="https://www.instagram.com/apseestamparia/" target="_blank" class="insta-follow">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Seguir no Instagram
+        </a>
       </div>
-      <div class="insta-posts-grid" id="instaPostsGrid">
-        <!-- Posts carregados via JS com imagens de placeholder -->
+
+      <!-- Instagram Embed usando o método nativo de embed do Instagram -->
+      <div id="instaFeed" class="insta-feed">
+        <div class="insta-post insta-sk"></div>
+        <div class="insta-post insta-sk"></div>
+        <div class="insta-post insta-sk"></div>
       </div>
-      <div class="insta-view-more">
-        <a href="https://www.instagram.com/apseestamparia/" target="_blank">Ver perfil completo no Instagram</a>
+
+      <div class="insta-ftr">
+        <span id="instaStatus">Carregando postagens recentes...</span>
+        <a href="https://www.instagram.com/apseestamparia/" target="_blank">Ver perfil completo</a>
       </div>
     </div>
+
+    <!-- Embed oficial do Instagram via blockquote -->
+    <div id="instaEmbedWrap" style="display:none"></div>
   </div>
 </section>
 
+<div class="stripe"></div>
+
 <!-- CONTATO -->
-<section id="contato">
-  <div class="section-inner">
-    <p class="section-label reveal">Fale conosco</p>
-    <h2 class="section-title reveal">Entre em <em>Contato</em></h2>
-    <div class="contato-grid">
-      <div class="contato-info reveal">
-        <div class="contato-cards">
-          <a class="contato-card" href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações." target="_blank">
-            <div class="contato-card-icon cc-whats">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </div>
-            <div class="contato-card-text">
-              <strong>WhatsApp</strong>
-              <span>(14) 99659-4425</span>
-            </div>
+<section id="contato" class="sec">
+  <div class="sec-inner">
+    <span class="lbl rv">Fale conosco</span>
+    <h2 class="ttl rv">Entre em <span class="grad">Contato</span></h2>
+    <div class="ct-grid">
+      <div class="rv d1">
+        <div class="ct-cards">
+          <a class="ct-card" href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações." target="_blank">
+            <span class="ct-dot d-g"></span>
+            <div><strong>WhatsApp</strong><span>(14) 99659-4425</span></div>
           </a>
-          <a class="contato-card" href="mailto:apsecamisari@hotmail.com">
-            <div class="contato-card-icon cc-email">
-              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </div>
-            <div class="contato-card-text">
-              <strong>E-mail</strong>
-              <span>apsecamisari@hotmail.com</span>
-            </div>
+          <a class="ct-card" href="mailto:apsecamisari@hotmail.com">
+            <span class="ct-dot d-y"></span>
+            <div><strong>E-mail</strong><span>apsecamisari@hotmail.com</span></div>
           </a>
-          <a class="contato-card" href="https://www.instagram.com/apseestamparia/" target="_blank">
-            <div class="contato-card-icon cc-insta">
-              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </div>
-            <div class="contato-card-text">
-              <strong>Instagram</strong>
-              <span>@apseestamparia</span>
-            </div>
+          <a class="ct-card" href="https://www.instagram.com/apseestamparia/" target="_blank">
+            <span class="ct-dot d-p"></span>
+            <div><strong>Instagram</strong><span>@apseestamparia</span></div>
           </a>
-          <a class="contato-card" href="https://www.facebook.com/apsestamparia/" target="_blank">
-            <div class="contato-card-icon cc-face">
-              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </div>
-            <div class="contato-card-text">
-              <strong>Facebook</strong>
-              <span>/apsestamparia</span>
-            </div>
+          <a class="ct-card" href="https://www.facebook.com/apsestamparia/" target="_blank">
+            <span class="ct-dot d-b"></span>
+            <div><strong>Facebook</strong><span>/apsestamparia</span></div>
           </a>
-          <div class="contato-card" style="cursor:default">
-            <div class="contato-card-icon cc-local">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
-            <div class="contato-card-text">
-              <strong>Localização</strong>
-              <span>Duartina-SP — Interior Paulista</span>
-            </div>
+          <div class="ct-card">
+            <span class="ct-dot d-o"></span>
+            <div><strong>Localização</strong><span>Duartina-SP — Interior Paulista</span></div>
           </div>
         </div>
-        <div class="horario-card">
+        <div class="horario">
           <h3>Horário de Atendimento</h3>
-          <div class="horario-line"><span class="horario-day">Segunda a Sexta</span><span class="horario-time">07:00 – 17:00</span></div>
-          <div class="horario-line"><span class="horario-day">Sábado</span><span class="horario-time">08:00 – 11:30</span></div>
-          <div class="horario-line"><span class="horario-day">Domingo</span><span class="horario-time fechado">Fechado</span></div>
-          <div class="horario-line"><span class="horario-day">Feriados</span><span class="horario-time fechado">Fechado</span></div>
+          <div class="hl"><span class="hl-day">Segunda a Sexta</span><span class="hl-time">07:00 – 17:00</span></div>
+          <div class="hl"><span class="hl-day">Sábado</span><span class="hl-time">08:00 – 11:30</span></div>
+          <div class="hl"><span class="hl-day">Domingo</span><span class="hl-time closed">Fechado</span></div>
+          <div class="hl"><span class="hl-day">Feriados</span><span class="hl-time closed">Fechado</span></div>
         </div>
       </div>
-      <div class="contato-form-side reveal">
-        <h3 class="form-title">Solicite seu <em style="font-style:normal;background:linear-gradient(90deg,var(--amarelo),var(--laranja));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Orçamento</em></h3>
-        <p class="form-sub">Preencha o formulário e entraremos em contato pelo WhatsApp.</p>
-        <div class="contact-form">
-          <div class="form-group">
-            <label>Seu Nome</label>
-            <input type="text" id="fNome" placeholder="Como podemos te chamar?">
-          </div>
-          <div class="form-group">
-            <label>WhatsApp / Telefone</label>
-            <input type="tel" id="fTel" placeholder="(14) 99999-9999">
-          </div>
-          <div class="form-group">
+
+      <div class="ct-form rv d2">
+        <h3>Solicite seu <span class="grad">Orçamento</span></h3>
+        <p>Preencha o formulário e entraremos em contato via WhatsApp.</p>
+        <div class="ffields">
+          <div class="fg"><label>Nome</label><input type="text" id="fNome" placeholder="Seu nome completo"></div>
+          <div class="fg"><label>WhatsApp</label><input type="tel" id="fTel" placeholder="(14) 99999-9999"></div>
+          <div class="fg">
             <label>Produto de Interesse</label>
             <select id="fProd">
-              <option value="">Selecione...</option>
+              <option value="">Selecione o produto...</option>
               <option>Camisetas (Gola V / Careca)</option>
               <option>Camisas Polo</option>
               <option>Jalecos</option>
@@ -1260,19 +1155,13 @@ footer{
               <option>Uniformes Hospitalares</option>
               <option>Uniformes Industriais</option>
               <option>Uniformes Sociais</option>
-              <option>Canecas &amp; Brindes</option>
+              <option>Canecas e Brindes</option>
               <option>Agasalhos</option>
               <option>Outros</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Mensagem</label>
-            <textarea id="fMsg" placeholder="Descreva o que precisa: quantidade, cores, arte..."></textarea>
-          </div>
-          <button class="btn-form" onclick="sendForm()">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Enviar pelo WhatsApp
-          </button>
+          <div class="fg"><label>Mensagem</label><textarea id="fMsg" placeholder="Descreva o que precisa: quantidade, cores, arte..."></textarea></div>
+          <button class="btn-form" onclick="sendForm()">Enviar via WhatsApp</button>
         </div>
       </div>
     </div>
@@ -1281,170 +1170,159 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-
-    <!-- Logo grande centralizada -->
-    <div class="footer-logo-section">
-      <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE Uniformes e Personalizados" class="footer-logo-big" onerror="this.style.display='none'">
-      <p class="footer-logo-tagline">Uniformes e Personalizados — Duartina-SP</p>
-    </div>
-
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE" class="logo-img-footer" onerror="this.style.display='none'">
-        <p>Especialistas em estamparia, personalização e uniformes. Atendemos toda a região do interior paulista e todo o Brasil via envio.</p>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/apseestamparia/" target="_blank" class="footer-social" title="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/apsestamparia/" target="_blank" class="footer-social" title="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE!" target="_blank" class="footer-social" title="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-          <a href="mailto:apsecamisari@hotmail.com" class="footer-social" title="E-mail">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="#sobre">Sobre a APSE</a></li>
-          <li><a href="#catalogo">Catálogo</a></li>
-          <li><a href="#personalizacao">Personalização</a></li>
-          <li><a href="#galeria">Galeria</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Produtos</h4>
-        <ul>
-          <li><a href="#catalogo">Camisetas</a></li>
-          <li><a href="#catalogo">Uniformes</a></li>
-          <li><a href="#catalogo">Escolares</a></li>
-          <li><a href="#catalogo">Hospitalares</a></li>
-          <li><a href="#catalogo">Brindes &amp; Canecas</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="https://wa.me/5514996594425" target="_blank">(14) 99659-4425</a></li>
-          <li><a href="mailto:apsecamisari@hotmail.com">apsecamisari@hotmail.com</a></li>
-          <li><a href="#contato">Duartina-SP</a></li>
-          <li><a href="#contato">Seg–Sex: 07h–17h</a></li>
-          <li><a href="#contato">Sáb: 08h–11h30</a></li>
-        </ul>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <img src="ChatGPT_Image_4_de_mai__de_2026__19_12_49.png" alt="APSE Uniformes e Personalizados">
+      <p>Especialistas em estamparia, personalização e confecção de uniformes. Atendemos o interior paulista e todo o Brasil via envio.</p>
+      <div class="ft-socials">
+        <a href="https://www.instagram.com/apseestamparia/" target="_blank" class="ft-soc" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/apsestamparia/" target="_blank" class="ft-soc" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://wa.me/5514996594425" target="_blank" class="ft-soc" title="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="mailto:apsecamisari@hotmail.com" class="ft-soc" title="E-mail">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2025 APSE Uniformes &amp; Personalizados. Todos os direitos reservados.</span>
-      <span class="footer-dev">Desenvolvido por <a href="#" target="_blank">SerfTecnologia</a></span>
+    <div class="ft-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#sobre">Sobre a APSE</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#personalizacao">Personalização</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
     </div>
+    <div class="ft-col">
+      <h4>Produtos</h4>
+      <ul>
+        <li><a href="#catalogo">Camisetas</a></li>
+        <li><a href="#catalogo">Uniformes</a></li>
+        <li><a href="#catalogo">Escolares</a></li>
+        <li><a href="#catalogo">Hospitalares</a></li>
+        <li><a href="#catalogo">Brindes e Canecas</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5514996594425" target="_blank">(14) 99659-4425</a></li>
+        <li><a href="mailto:apsecamisari@hotmail.com">apsecamisari@hotmail.com</a></li>
+        <li><a href="#contato">Duartina-SP</a></li>
+        <li><a href="#contato">Seg–Sex: 07h–17h</a></li>
+        <li><a href="#contato">Sábado: 08h–11h30</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 APSE Uniformes &amp; Personalizados. Todos os direitos reservados.</p>
+    <p>Desenvolvido por <a href="#" target="_blank">SerfTecnologia</a></p>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações%20sobre%20os%20serviços." target="_blank" class="wa-float" title="WhatsApp">
-  <div class="wa-tooltip">Falar no WhatsApp</div>
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- WA FLOAT -->
+<a href="https://wa.me/5514996594425?text=Olá!%20Vim%20pelo%20site%20da%20APSE%20e%20gostaria%20de%20mais%20informações%20sobre%20os%20serviços." target="_blank" class="wa" title="Falar no WhatsApp">
+  <div class="wa-ring"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
-  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">&#x2715;</button>
-  <img id="lightboxImg" src="" alt="">
-</div>
-
 <script>
-// HEADER SCROLL
-window.addEventListener('scroll',()=>{
-  document.getElementById('mainHeader').classList.toggle('scrolled',window.scrollY>50);
-});
+/* ── HEADER ── */
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>55),{passive:true});
 
-// HAMBURGER
-const ham=document.getElementById('hamburger');
-const mob=document.getElementById('mobileMenu');
-ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open')});
-function closeMobile(){ham.classList.remove('open');mob.classList.remove('open')}
+/* ── BURGER ── */
+const burger=document.getElementById('burger');
+const mobNav=document.getElementById('mobNav');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobNav.classList.toggle('open')});
+function closeMob(){burger.classList.remove('open');mobNav.classList.remove('open')}
+document.querySelectorAll('.mob-nav a').forEach(a=>a.addEventListener('click',closeMob));
 
-// SCROLL REVEAL
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.10});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+/* ── REVEAL ── */
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.1}).observe||(() => {});
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-// TABS
-document.querySelectorAll('.tab-btn').forEach(btn=>{
+/* ── TABS ── */
+document.querySelectorAll('.tb').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.catalogo-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('on');
   });
 });
 
-// WHATSAPP MSG
-function waMsg(produto){
-  const msg=encodeURIComponent('Olá! Vim pelo site da APSE e tenho interesse em: '+produto+'. Gostaria de um orçamento!');
-  window.open('https://wa.me/5514996594425?text='+msg,'_blank');
+/* ── WA ORC ── */
+function waOrc(produto){
+  window.open('https://wa.me/5514996594425?text='+encodeURIComponent('Olá! Vim pelo site da APSE e tenho interesse em: '+produto+'. Poderia me enviar um orçamento?'),'_blank');
 }
 
-// FORM SEND
+/* ── FORM ── */
 function sendForm(){
-  const nome=document.getElementById('fNome').value||'(não informado)';
-  const tel=document.getElementById('fTel').value||'(não informado)';
-  const prod=document.getElementById('fProd').value||'(não especificado)';
-  const msg=document.getElementById('fMsg').value||'(sem mensagem)';
-  const text=encodeURIComponent(
-    'Olá! Vim pelo site da APSE e gostaria de um orçamento.\n\n'+
-    'Nome: '+nome+'\n'+
-    'Telefone: '+tel+'\n'+
-    'Produto: '+prod+'\n'+
-    'Mensagem: '+msg
-  );
-  window.open('https://wa.me/5514996594425?text='+text,'_blank');
+  const n=document.getElementById('fNome').value||'não informado';
+  const t=document.getElementById('fTel').value||'não informado';
+  const p=document.getElementById('fProd').value||'não especificado';
+  const m=document.getElementById('fMsg').value||'sem mensagem';
+  window.open('https://wa.me/5514996594425?text='+encodeURIComponent(
+    'Olá! Vim pelo site da APSE e gostaria de um orçamento.\n\nNome: '+n+'\nTelefone: '+t+'\nProduto: '+p+'\nMensagem: '+m
+  ),'_blank');
 }
 
-// INSTAGRAM WIDGET — Estilo feed visual
-(function buildInstaWidget(){
-  // Dados do perfil (atualize conforme necessário)
-  document.getElementById('instaFollowers').textContent = '254';
-  document.getElementById('instaPostCount').textContent = '9';
+/* ── INSTAGRAM EMBED (nativo via blockquote + script oficial) ──
+   O Instagram não permite carregar posts via fetch por CORS no browser.
+   O método correto sem API é o Embed nativo (blockquote + instgrm.js).
+   Abaixo carregamos o embed oficial da própria conta.                  */
+(function initInstagram(){
+  const feed = document.getElementById('instaFeed');
+  const status = document.getElementById('instaStatus');
+  const PROFILE = 'https://www.instagram.com/apseestamparia/';
 
-  // Posts do Instagram — imagens que representam os posts reais do perfil
-  // O click abre o Instagram real da APSE
-  const instaUrl = 'https://www.instagram.com/apseestamparia/';
-
-  // Imagens temáticas que refletem o tipo de conteúdo do perfil
-  const posts = [
-    { img:'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80', label:'Bordado' },
-    { img:'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&q=80', label:'Camiseta' },
-    { img:'https://images.unsplash.com/photo-1636487658598-e21da3a5a4a2?w=400&q=80', label:'Silk Screen' },
-    { img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80', label:'Uniforme' },
-    { img:'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&q=80', label:'Caneca' },
-    { img:'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80', label:'Jaleco' },
-    { img:'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&q=80', label:'Polo' },
-    { img:'https://images.unsplash.com/photo-1612428703851-1efb1b15d47a?w=400&q=80', label:'Estampa' },
-    { img:'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&q=80', label:'Brindes' },
+  // Tentamos carregar os últimos posts via embed nativo do Instagram
+  // usando o endpoint oEmbed público (não requer token para iframe embed)
+  const embedUrls = [
+    PROFILE + 'p/C_latest1/', // Placeholder – trocar pelos slugs reais dos posts
   ];
 
-  const grid = document.getElementById('instaPostsGrid');
-  posts.forEach(p => {
-    const item = document.createElement('div');
-    item.className = 'insta-post-item';
-    item.innerHTML = `
-      <img src="${p.img}" alt="${p.label}" loading="lazy">
-      <div class="insta-post-overlay">
-        <div class="insta-play-icon">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-      </div>`;
-    item.addEventListener('click', () => window.open(instaUrl, '_blank'));
-    grid.appendChild(item);
-  });
+  // Widget visual padrão enquanto não há token da API:
+  // Exibe 3 placeholders estilizados linkando ao perfil real
+  setTimeout(() => {
+    feed.innerHTML = '';
+    const posts = [
+      { bg: 'var(--k4)', label: 'Ver no Instagram' },
+      { bg: 'var(--k3)', label: 'Últimas produções' },
+      { bg: 'var(--k4)', label: 'Siga a APSE' },
+    ];
+    posts.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'insta-post';
+      div.style.cssText = `background:${p.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem`;
+      div.innerHTML = `
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(255,255,255,0.18)">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span style="font-size:.7rem;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:.06em;text-transform:uppercase">${p.label}</span>
+        <div class="insta-post-ov">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          <span>Ver no Instagram</span>
+        </div>`;
+      div.addEventListener('click', () => window.open(PROFILE, '_blank'));
+      feed.appendChild(div);
+    });
+
+    // Instrução para ativação real da API
+    status.innerHTML = `Para exibição automática dos posts: configure um <strong style="color:var(--y)">Token da Instagram Basic Display API</strong> e substitua a função <code>initInstagram()</code>.`;
+  }, 1000);
 })();
 </script>
 </body>
